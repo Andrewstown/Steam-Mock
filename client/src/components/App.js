@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, Route, Switch } from "react-router-dom";
 
 // import Home from "./Home"
-import Store from "./Store";
-import Library from "./Library";
+import GameStore from "./GameStore";
+import GameLibrary from "./GameLibrary";
 import Community from "./Community";
 import Users from "./Users";
 import NavBar from "./NavBar";
