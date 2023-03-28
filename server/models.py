@@ -1,90 +1,164 @@
+from flask import Flask
+from flask_cors import CORS
+from flask_migrate import Migrate
+from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from sqlalchemy.orm import validates
-from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy_serializer import SerializerMixin
-
-from config import db
+from sqlalchemy.ext.associationproxy import association_proxy
 
 metadata = MetaData(naming_convention={
-    "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
+    'fk': 'fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s',
 })
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.json.compact = False
 
 db = SQLAlchemy(metadata=metadata)
 
-# Models go here!
+CORS(app)
+api = Api(app)
+db.init_app(app)
+migrate = Migrate(app, db)
+
 class User(db.Model, SerializerMixin):
-    __tablename__ = "users"
+    __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
+    bio = db.Column(db.String, server_default='')
+    img = db.Column(db.String, server_default='https://steamuserimages-a.akamaihd.net/ugc/885384897182110030/F095539864AC9E94AE5236E04C8CA7C2725BCEFF/')
     name = db.Column(db.String)
     email = db.Column(db.String)
     password = db.Column(db.String)
-    picture = db.Column(db.String)
-    bio = db.Column(db.String)    
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
 
     user_games = db.relationship('UserGame', backref='user')
-
-    serialize_rules = ('-user_games.user', '-games.users','-created_at', '-updated_at')
+    user_reviews = db.relationship('Review', backref='user')
 
     games = association_proxy('user_games', 'game')
+    reviews = association_proxy('reviews', 'user')
+
+    serialize_rules = ('-user_games.user', '-games.users', '-updated_at', '-created_at')
+
+    @validates('name')
+    def validate_name(self, key, value):
+        if len(value) < 1 or len(value) > 20:
+            raise ValueError('Please enter a Username between 1-20 characters')
+        return value
+
+    @validates('email')
+    def validate_email(self, key, value):
+        if len(value) < 7 and not '@' in value:
+            raise ValueError('Please enter a valid Email')
+        return value
+
+    @validates('password')
+    def validate_password(self, key, value):
+        if len(value) < 1:
+            raise ValueError('Please enter a Password')
+        return value
 
     def __repr__(self):
-        return f'<user name:{self.name}, email:{self.address}, >'
-
+        return f'<user name:{self.name}, email:{self.email}>'
 
 class Game(db.Model, SerializerMixin):
-    __tablename__ = "games"
+    __tablename__ = 'games'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String)
-    #price should prob be float with 2 decimals but I'm tired
-    price = db.Column(db.Integer)
+    img = db.Column(db.String)
+    price = db.Column(db.Float)
     genre = db.Column(db.String)
-    description = db.Column(db.String)    
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    title = db.Column(db.String)
+    studio = db.Column(db.String)
+    description = db.Column(db.String)
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
 
-    def __repr__(self):
-        return f'<game title:{self.title}, price:{self.price}, genre: {self.genre}, description: {self.description}>'
-
-    user_games = db.relationship('UserGame', backref='game')
-
-    serialize_rules = ('-user_games.game', '-users.games','-created_at', '-updated_at')
+    game_users = db.relationship('UserGame', backref='game')
+    game_reviews = db.relationship('Review', backref='game')
 
     users = association_proxy('user_games', 'user')
+    reviews = association_proxy('reviews', 'game')
+
+    serialize_rules = ('-game_users.game', '-users.games', '-created_at', '-updated_at')
+
+    @validates('img')
+    def validate_img(self, key, value):
+        if len(value) < 0:
+            raise ValueError('Please enter an Image')
+        return value
 
     @validates('price')
     def validate_price(self, key, value):
         if value < 0:
-            raise ValueError("must have a valid price")
+            raise ValueError('Please enter a valid Price')
         return value
 
-    @validates('description')  
-    def validate_description(self, key, description):
-        if not description:
-            raise ValueError('Description must be present.')
-        
-        if len(description) < 20:
-            raise ValueError('the description must be at least 20 characters')
-        return description
+    @validates('genre')
+    def validate_genre(self, key, value):
+        if len(value) < 0:
+            raise ValueError('Please enter a Genre')
+        return value
 
+    @validates('title')
+    def validate_title(self, key, value):
+        if len(value) < 0:
+            raise ValueError('Please enter a Title')
+        return value
 
+    @validates('studio')
+    def validate_title(self, key, value):
+        if len(value) < 0:
+            raise ValueError('Please enter a Studio')
+        return value
 
+    @validates('description')
+    def validate_description(self, key, value):
+        if len(value) < 20:
+            raise ValueError('Please enter a Description with at least 20 characters')
+        return value
+    
+    def __repr__(self):
+        return f'<game title:{self.title}, price:{self.price}, genre: {self.genre}, description: {self.description}>'
 
-class UserGame(db.Model, SerializerMixin):
-    __tablename__ = "user_games"
+class Review(db.Model, SerializerMixin):
+    __tablename__ = 'reviews'
 
     id = db.Column(db.Integer, primary_key=True)
-    hours_played = db.Column(db.Integer)
-    last_played = db.Column(db.DateTime)
-    user_rating = db.Column(db.Integer)
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    rating = db.Column(db.Integer)
+    description = db.Column(db.String)
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
-    
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    game_id = db.Column(db.Integer, db.ForeignKey('games.id'))
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
 
-    serialize_rules = ('-user.games', '-games.user', '-user.user_games', 'game.user_games','-created_at', '-updated_at')
+    game_id = db.Column(db.Integer, db.ForeignKey('games.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    @validates('rating')
+    def validate_rating(self, key, value):
+        if value < 1 or value > 10:
+            raise ValueError('Rating must be 1-10')
+        return value
+
+    @validates('description')
+    def validate_description(self, key, value):
+        if len(value) < 0:
+            raise ValueError('Please enter a Review')
+        return value
+
+class UserGame(db.Model, SerializerMixin):
+    __tablename__ = 'user_games'
+
+    id = db.Column(db.Integer, primary_key=True)
+    last_played = db.Column(db.DateTime)
+    hours_played = db.Column(db.Integer)
+    updated_at = db.Column(db.DateTime, onupdate=db.func.now())
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    
+    game_id = db.Column(db.Integer, db.ForeignKey('games.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    serialize_rules = ('-user.games', '-games.user', '-user.user_games', 'game.user_games', '-created_at', '-updated_at')
