@@ -38,10 +38,10 @@ function App() {
           {/* <Home /> */}
         </Route>
         {/* <Route exact path="/store">
-          <Store games = {games}/>
+          <GameStore games = {games}/>
         </Route>
         <Route exact path="/library">
-          <Library games = {games}/>
+          <GameLibrary games = {games}/>
         </Route>
         <Route exact path="/community">
           <Community users = {users}/>
