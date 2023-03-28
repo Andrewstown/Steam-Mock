@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
 import { Link, Route, Switch } from "react-router-dom";
 
-import Home from "./Home"
+// import Home from "./Home"
 import Store from "./Store";
 import Library from "./Library";
 import Community from "./Community";
@@ -36,9 +35,9 @@ function App() {
       </h1>
       <Switch>
         <Route exact path="/">
-          <Home />
+          {/* <Home /> */}
         </Route>
-        <Route exact path="/store">
+        {/* <Route exact path="/store">
           <Store games = {games}/>
         </Route>
         <Route exact path="/library">
@@ -52,7 +51,7 @@ function App() {
         </Route>
         <Route path="*">
             <h1>404 not found</h1>
-        </Route>
+        </Route> */}
       </Switch>
     </main>
   );
