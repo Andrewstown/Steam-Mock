@@ -43,3 +43,12 @@
     background-color: #04AA6D;
     color: white;
   }
+
+
+/* header css from Steam website */
+#global_action_menu {
+    line-height: 24px;
+    vertical-align: top;
+    display: inline-block;
+}
+

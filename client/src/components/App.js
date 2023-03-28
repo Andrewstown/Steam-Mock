@@ -14,13 +14,13 @@ function App() {
   const [users, setUsers] = useState([])
 
   useEffect(() => {
-    fetch("url")
+    fetch("/games/")
       .then((r) => r.json())
       .then(setGames);
   }, []);
 
   useEffect(() => {
-    fetch("url")
+    fetch("/users/")
       .then((r) => r.json())
       .then(setUsers);
   }, []);
