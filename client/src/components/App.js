@@ -6,7 +6,7 @@ import Home from "./Home"
 import Store from "./Store";
 import Library from "./Library";
 import Community from "./Community";
-import Profile from "./Profile";
+import Users from "./Users";
 import NavBar from "./NavBar";
 import Header from "./Header"
 
@@ -48,7 +48,7 @@ function App() {
           <Community users = {users}/>
         </Route>
         <Route exact path="/user/:id">
-          <Profile users = {users}/>
+          <Users users = {users}/>
         </Route>
         <Route path="*">
             <h1>404 not found</h1>
