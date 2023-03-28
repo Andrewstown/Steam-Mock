@@ -7,6 +7,8 @@ import Store from "./Store";
 import Library from "./Library";
 import Community from "./Community";
 import Profile from "./Profile";
+import NavBar from "./NavBar";
+import Header from "./Header"
 
 function App() {
 
@@ -27,6 +29,8 @@ function App() {
 
   return (
     <main>
+      <Header />
+      <NavBar />
       <h1>
         <Link to="/">We are better than Steam</Link>
       </h1>
