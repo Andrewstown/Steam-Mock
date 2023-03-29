@@ -6,7 +6,6 @@ import GameStore from "./GameStore";
 import GameLibrary from "./GameLibrary";
 import Community from "./Community";
 import Users from "./Users";
-import UserContainer from "./UserContainer";
 import NavBar from "./NavBar";
 import Header from "./Header"
 import Home from "./Home"
@@ -20,7 +19,7 @@ function App() {
     fetch("/games")
       .then((r) => r.json())
       .then(data => {
-        // print(data)
+        console.log(data)
         setGames(data)});
   }, []);
 
@@ -51,7 +50,6 @@ function App() {
     <main>
       <Header />
       <NavBar />
-      <UserContainer users />
       <h1>
         <Link to="/">We are better than Steam</Link>
       </h1>
@@ -68,7 +66,7 @@ function App() {
         <Route exact path="/community">
           <Community users = {users}/>
         </Route>
-        <Route exact path="/user/:id">
+        <Route exact path="/user">
           <Users users = {users}/>
         </Route>
         <Route path="*">
