@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import UserContainer from "./UserContainer";
+import './Users.css'
 
 function Users( {users} ) {
   
@@ -12,13 +13,5 @@ function Users( {users} ) {
     <ul className="cards">{usercards}</ul>
   );
 }
-
-// function Users( {users} ) {
-  
-
-//   return (
-//     <ul className="cards"><UserContainer user = {users}/></ul>
-//   );
-// }
 
 export default Users;
