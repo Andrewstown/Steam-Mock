@@ -40,7 +40,7 @@
   
   /* Add a color to the active/current link */
   .topnav a.active {
-    background-color: #04AA6D;
+    background-color: #0452aa;
     color: white;
   }
 
@@ -121,7 +121,7 @@
   background-image: linear-gradient(120DEG, #00ADEE, #000000); 
 }
 
-/* a.button1{ 
+a.button1{ 
 
   display:inline-block;
   padding:0.35em 1.2em;
@@ -147,4 +147,4 @@
   display:block;
   margin:0.4em auto;
   }
-}*/
+}
