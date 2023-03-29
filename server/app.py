@@ -41,12 +41,12 @@ api.add_resource(Users, '/users')
 class UserById(Resource):
     #GET
     def get(self, id):
-        user = User.query.filter_by(id = id).first().to_dict()
+        user = User.query.filter_by(id = id).first()
 
         if not user:
             return make_response({'error': 'User Not Found!'}, 404)
 
-        return make_response(user, 200)
+        return make_response(user.to_dict(), 200)
 
     #PATCH
     def patch(self, id):
@@ -85,16 +85,19 @@ api.add_resource(UserById, '/users/<int:id>')
 class Games(Resource):
     #GET
     def get(self):
-        return make_response(jsonify([game.to_dict(rules = ('-game_users', '-game_reviews',)) for game in Game.query.all()]), 200)
+        return make_response(jsonify([game.to_dict() for game in Game.query.all()]), 200)
 
     #POST
     def post(self):
         try:
+            r_json = request.get_json()
             new_game = Game(
-                price = request.get_json()['price'],
-                genre = request.get_json()['genre'],
-                title = request.get_json()['title'],
-                description = request.get_json()['description']
+                img = r_json['image'],
+                price = r_json['price'],
+                genre = r_json['genre'],
+                title = r_json['title'],
+                studio = r_json['studio'],
+                description = r_json['description']
             )
 
             db.session.add(new_game)
@@ -114,7 +117,7 @@ class GameById(Resource):
 
     #PATCH
     def patch(self, id):
-        game = Game.query.filter_by(id == id).first()
+        game = Game.query.filter_by(id = id).first()
 
         if not game:
             return make_response({ 'error': 'Game Not Found!'}, 404)

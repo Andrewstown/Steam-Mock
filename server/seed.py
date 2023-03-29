@@ -53,8 +53,9 @@ if __name__ == '__main__':
                 title = gameTemp['titles'][randint(0, len(gameTemp['titles'])-1)],
                 studio = gameTemp['studios'][randint(0, len(gameTemp['studios'])-1)],
                 description = gameTemp['descriptions'][randint(0, len(gameTemp['descriptions'])-1)],
-                created_at = f.date_between(start_date=datetime(2003, 9, 12))
+                created_at = f.date_between(start_date=datetime(2003, 9, 12)),
             )
+            game.updated_at = f.date_between(start_date=game.created_at)
             db.session.add(game)
 
         print('Generating UserGames with Reviews in them...')
