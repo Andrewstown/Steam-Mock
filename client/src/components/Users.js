@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function User( {name, bio, games, pictureUrl} ) {
+function Users( {name, bio, games, pictureUrl} ) {
   
   const[clicked, setClicked] = useState(false);
 
@@ -33,4 +33,4 @@ function User( {name, bio, games, pictureUrl} ) {
   );
 }
 
-export default User;
+export default Users;

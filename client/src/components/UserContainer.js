@@ -1,7 +1,7 @@
 import React from "react";
 import Users from "./Users";
 
-function UsersContainer( {users} ) {
+function UserContainer( {users} ) {
     
   const userCard = users.map((user) => {
       return (
@@ -18,9 +18,9 @@ function UsersContainer( {users} ) {
 
   return (
     <ul className="cards">
-      {profileCard}
+      {userCard}
     </ul>
   );
 }
 
-export default UsersContainer;
+export default UserContainer;
