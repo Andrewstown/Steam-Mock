@@ -85,7 +85,7 @@ api.add_resource(UserById, '/users/<int:id>')
 class Games(Resource):
     #GET
     def get(self):
-        return make_response(jsonify([game.to_dict() for game in Game.query.all()]), 200)
+        return make_response(jsonify([game.to_dict(rules = ('-game_users', '-game_reviews',)) for game in Game.query.all()]), 200)
 
     #POST
     def post(self):
