@@ -9,6 +9,7 @@ import Users from "./Users";
 import UserContainer from "./UserContainer";
 import NavBar from "./NavBar";
 import Header from "./Header"
+import Home from "./Home"
 
 function App() {
 
@@ -54,15 +55,14 @@ function App() {
       <h1>
         <Link to="/">We are better than Steam</Link>
       </h1>
-
       <Switch>
         <Route exact path="/">
-          {/* <Home /> */}
+          <Home />
         </Route>
-        {/* <Route exact path="/store">
+         <Route exact path="/store">
           <GameStore games = {games}/>
         </Route>
-        <Route exact path="/library">
+        {/*<Route exact path="/library">
           <GameLibrary games = {games}/>
         </Route>
         <Route exact path="/community">

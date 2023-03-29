@@ -2,12 +2,6 @@ import React from "react";
 
 import { NavLink } from "react-router-dom"
 
-import Users from "./Users"
-import GameStore from "./GameStore";
-import GameLibrary from "./GameLibrary";
-import Community from "./Community";
-
-
 function NavBar() {
 
     return (
