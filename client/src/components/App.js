@@ -35,9 +35,9 @@ function App() {
     setUsers({
       id: 1,
       bio: "likes Flatiron",
-      pictureUrl: "https://steamuserimages-a.akamaihd.net/ugc/885384897182110030/F095539864AC9E94AE5236E04C8CA7C2725BCEFF/",
+      img: "https://steamuserimages-a.akamaihd.net/ugc/885384897182110030/F095539864AC9E94AE5236E04C8CA7C2725BCEFF/",
       name: "Duane",
-      games: "COD, MarioCart, Smash",
+      user_games: "COD, MarioCart, Smash",
       email: "duanegrell@gmail.com",
       password: "helpme"
     })
@@ -51,7 +51,7 @@ function App() {
       <Header />
       <NavBar />
       <h1>
-        <Link to="/">We are better than Steam</Link>
+        <Link to="/">Hi Friends</Link>
       </h1>
       <Switch>
         <Route exact path="/">
