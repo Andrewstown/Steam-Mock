@@ -37,12 +37,8 @@ class User(db.Model, SerializerMixin):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
     user_games = db.relationship('UserGame', backref='user')
-    user_reviews = db.relationship('Review', backref='user')
 
-    games = association_proxy('user_games', 'game')
-    reviews = association_proxy('reviews', 'user')
-
-    serialize_rules = ('-user_games.user', '-games.users', '-updated_at', '-created_at')
+    serialize_rules = ('-user_games.user',)
 
     @validates('name')
     def validate_name(self, key, value):
@@ -78,13 +74,9 @@ class Game(db.Model, SerializerMixin):
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
-    game_users = db.relationship('UserGame', backref='game')
     game_reviews = db.relationship('Review', backref='game')
 
-    users = association_proxy('user_games', 'user')
-    reviews = association_proxy('reviews', 'game')
-
-    serialize_rules = ('-game_users.game', '-users.games', '-created_at', '-updated_at')
+    serialize_rules = ('-game_reviews.game',)
 
     @validates('img')
     def validate_img(self, key, value):
@@ -160,5 +152,3 @@ class UserGame(db.Model, SerializerMixin):
     
     game_id = db.Column(db.Integer, db.ForeignKey('games.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
-    serialize_rules = ('-user.games', '-games.user', '-user.user_games', 'game.user_games', '-created_at', '-updated_at')
