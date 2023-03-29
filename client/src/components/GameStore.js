@@ -2,23 +2,27 @@
 import React from "react";
 import GameCard from "./GameCard";
 
-function GameStore({ games, searchGenre, onChangeGenre }) {
+function GameStore({ games, searchGenre, onChangeGenre, onChangedTitle }) {
 
   const cards = games.map((game) => (
     <GameCard game = {game}/>
   ))
 
-  //eventListener goes here
-  // function handleChangeGenre(event) {
-  //   onChangeGenre(event.target.value);
-  //handleChangeGenre = {(e) => searchGenre(e.target.value)}  // };
+ // eventListeners go here
+    function handleChangeGenre(event) {
+      onChangeGenre(event.target.value);
+    };
+
+    function handleChangeTitle(event) {
+      onChangedTitle(event.target.value);
+    };
 
 
 
   return (
     <div>
       <div class="search">
-      <select id="select-genre" class="filter" placeholder="Pick a genre..." onChange={(e) => searchGenre(e.target.value)}>
+      <select id="select-genre" class="filter" placeholder="Pick a genre..." onChange={handleChangeGenre}>
           <option value="">Pick a genre...</option>
           <option value="Indie">Indie</option>
           <option value="Adventure">Adventure</option>
@@ -44,6 +48,16 @@ function GameStore({ games, searchGenre, onChangeGenre }) {
           <option value="Platformer">Platformer</option>
           <option value="Tower defense">Tower Defense</option>
         </select>
+        
+        <form action="/" method="get">
+          <input
+            type="text"
+            placeholder="Search by title"
+            onChange={handleChangeTitle}
+            value={searchInput} />
+          <button type="submit">Search</button>
+        </form>
+          
       </div>
       <ul className="cards">{cards}</ul>
     </div>

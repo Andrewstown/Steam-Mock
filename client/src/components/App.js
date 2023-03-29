@@ -16,6 +16,7 @@ function App() {
   const [users, setUsers] = useState([])
 
   const [searchGenre, setSearchGenre] = useState("");
+  const [searchTitle, setSearchTitle] = useState("");
 
   useEffect(() => {
     fetch("/games")
@@ -47,9 +48,10 @@ function App() {
   // }, []);
   // console.log(users)
 
-  const filteredGames = searchGenre
-    ? games.filter((game) => game.genres.toLowerCase().includes(searchGenre.toLowerCase()))
-    :games;
+  const filteredGames = games.filter((game) => game.genre.toLowerCase().includes(searchGenre.toLowerCase()))
+
+  const filteredGamesByGenreTitle = filteredGames.filter((game) => game.title.toLowerCase().includes(searchTitle.toLowerCase()))
+
 
   return (
     <main className="app">
@@ -63,7 +65,7 @@ function App() {
           <Home />
         </Route>
          <Route exact path="/store">
-          <GameStore games = {filteredGames} searchGenre = {searchGenre}/>
+          <GameStore games = {filteredGamesByGenreTitle} searchGenre = {searchGenre} onChangeGenre={setSearchGenre} searchTitle = {searchTitle} onChangedTitle = {setSearchTitle} />
         </Route>
         <Route exact path="/library">
           <GameLibrary games = {games}/>
