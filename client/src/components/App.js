@@ -52,7 +52,7 @@ function App() {
 
 
   return (
-    <main>
+    <main className="app">
       <Header />
       <NavBar />
       <h1>

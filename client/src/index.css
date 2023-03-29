@@ -116,3 +116,7 @@
   box-shadow: 2px 2px 2px rgb(152, 152, 153);
   font-family: sans-serif
 }
+
+.app {
+  background-image: linear-gradient(120DEG, #00ADEE, #000000); 
+}
