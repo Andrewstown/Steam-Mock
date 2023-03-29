@@ -43,8 +43,8 @@ function App() {
       email: "duanegrell@gmail.com",
       password: "helpme"
     })
-    console.log(users)
   }, []);
+  console.log(users)
 
   const filteredGames = games.filter((game) => game.genres.toLowerCase().includes(searchGenre.toLowerCase()))
   console.log(filteredGames);
