@@ -1,35 +1,14 @@
 import React, {useState} from "react";
+import UserContainer from "./UserContainer";
 
-function Users( {name, bio, games, pictureUrl} ) {
+function Users( {users} ) {
   
-  const[clicked, setClicked] = useState(false);
-
-  function handleClick() {
-    if (clicked == true) {
-      setClicked(false);
-    }
-    else{
-        setClicked(true);
-    }
-  }
+  const usercards = users.map((user) => (
+    <UserContainer user = {user}/>
+  ))
 
   return (
-    <li className="cards__item">
-      <div className="card">
-        <img
-          onClick = {handleClick}
-          src={pictureUrl}
-          alt={name}
-          className="card__image"
-        />
-        <div className="card__content">
-          <div className="card__title">{name}</div>
-          <p className="card__text">{clicked ? games : bio}</p>
-          <div className="card__detail">
-          </div>
-        </div>
-      </div>
-    </li>
+    <ul className="cards">{usercards}</ul>
   );
 }
 
