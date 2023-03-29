@@ -9,14 +9,16 @@ function GameStore({ games, searchGenre, onChangeGenre }) {
   ))
 
   //eventListener goes here
-  function handleChangeGenre(event) {
-    onChangeGenre(event.target.value);
-  };
+  // function handleChangeGenre(event) {
+  //   onChangeGenre(event.target.value);
+  //handleChangeGenre = {(e) => searchGenre(e.target.value)}  // };
+
+
 
   return (
     <div>
       <div class="search">
-      <select id="select-genre" class="filter" placeholder="Pick a genre..." onChange={handleChangeGenre}>
+      <select id="select-genre" class="filter" placeholder="Pick a genre..." onChange={(e) => searchGenre(e.target.value)}>
           <option value="">Pick a genre...</option>
           <option value="Indie">Indie</option>
           <option value="Adventure">Adventure</option>

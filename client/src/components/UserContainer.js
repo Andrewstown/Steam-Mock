@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 function UserContainer( {user} ) {
-  
+  console.log(user)
   const[clicked, setClicked] = useState(false);
 
   function handleClick() {
