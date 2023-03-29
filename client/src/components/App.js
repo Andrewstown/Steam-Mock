@@ -62,7 +62,7 @@ function App() {
          <Route exact path="/store">
           <GameStore games = {games}/>
         </Route>
-        {/*<Route exact path="/library">
+        <Route exact path="/library">
           <GameLibrary games = {games}/>
         </Route>
         <Route exact path="/community">
@@ -73,7 +73,7 @@ function App() {
         </Route>
         <Route path="*">
             <h1>404 not found</h1>
-        </Route> */}
+        </Route> 
       </Switch>
     </main>
   );
