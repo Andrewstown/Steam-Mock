@@ -3,11 +3,9 @@ import React from "react";
 function Header() {
   return (
     <header className="header">
-      <a className='installButton' href="https://store.steampowered.com/about/?snr=1_4_4__global-header">
-        <img src="https://t4.ftcdn.net/jpg/00/15/08/29/360_F_15082962_hFK4ZWGDxR1N0EfG0bFNTipnRVMgnBqL.jpg"/>
-      </a>
+      <a href="url" class="button1">install now ⏩ </a>
       <a className='emailButton' href="url">
-        <img src="https://cdn-icons-png.flaticon.com/512/83/83968.png" />
+        <img src="https://icon-library.com/images/small-email-icon/small-email-icon-5.jpg" />
       </a>
       <div class="dropdown">
         <button class="dropbtn">user_name
