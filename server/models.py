@@ -36,7 +36,7 @@ class User(db.Model, SerializerMixin):
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
-    user_games = db.relationship('UserGame', backref='user')
+    # user_games = db.relationship('UserGame', backref='user')
 
     serialize_rules = ('-user_games.user',)
 

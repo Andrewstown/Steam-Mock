@@ -21,37 +21,35 @@ function App() {
     fetch("/games")
       .then((r) => r.json())
       .then(data => {
-        console.log(data)
         setGames(data)});
   }, []);
 
-  // useEffect(() => {
-  //   fetch("/users")
-  //     .then((r) => r.json())
-  //     .then(setUsers);
-  // }, []);
+  useEffect(() => {
+    fetch("/users")
+      .then((r) => r.json())
+      .then(data => {
+        // console.log(data)
+        setUsers(data)});
+  }, []);
 
 
   
-  useEffect(() => {
-    setUsers({
-      id: 1,
-      bio: "likes Flatiron",
-      img: "https://steamuserimages-a.akamaihd.net/ugc/885384897182110030/F095539864AC9E94AE5236E04C8CA7C2725BCEFF/",
-      name: "Duane",
-      user_games: "COD, MarioCart, Smash",
-      email: "duanegrell@gmail.com",
-      password: "helpme"
-    })
-  }, []);
-  console.log(users)
+  // useEffect(() => {
+  //   setUsers({
+  //     id: 1,
+  //     bio: "likes Flatiron",
+  //     img: "https://steamuserimages-a.akamaihd.net/ugc/885384897182110030/F095539864AC9E94AE5236E04C8CA7C2725BCEFF/",
+  //     name: "Duane",
+  //     user_games: "COD, MarioCart, Smash",
+  //     email: "duanegrell@gmail.com",
+  //     password: "helpme"
+  //   })
+  // }, []);
+  // console.log(users)
 
   const filteredGames = searchGenre
     ? games.filter((game) => game.genres.toLowerCase().includes(searchGenre.toLowerCase()))
     :games;
-  console.log(filteredGames);
-
-
 
   return (
     <main className="app">
@@ -65,7 +63,7 @@ function App() {
           <Home />
         </Route>
          <Route exact path="/store">
-          <GameStore games = {filteredGames} onChangeGenre={searchGenre} searchGenre = {searchGenre}/>
+          <GameStore games = {filteredGames} searchGenre = {searchGenre}/>
         </Route>
         <Route exact path="/library">
           <GameLibrary games = {games}/>
