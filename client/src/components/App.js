@@ -41,8 +41,8 @@ function App() {
       email: "duanegrell@gmail.com",
       password: "helpme"
     })
-    console.log(users)
   }, []);
+  console.log(users)
 
 
 

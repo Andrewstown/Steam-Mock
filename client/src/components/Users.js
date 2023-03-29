@@ -14,12 +14,9 @@ import UserContainer from "./UserContainer";
 
 function Users( {users} ) {
   
-  const usercards = ((users) => (
-    <UserContainer users = {users}/>
-  ))
 
   return (
-    <ul className="cards">{usercards}</ul>
+    <ul className="cards"><UserContainer user = {users}/></ul>
   );
 }
 
