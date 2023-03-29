@@ -46,7 +46,9 @@ function App() {
   }, []);
   console.log(users)
 
-  const filteredGames = games.filter((game) => game.genres.toLowerCase().includes(searchGenre.toLowerCase()))
+  const filteredGames = searchGenre
+    ? games.filter((game) => game.genres.toLowerCase().includes(searchGenre.toLowerCase()))
+    :games;
   console.log(filteredGames);
 
 
@@ -63,7 +65,7 @@ function App() {
           <Home />
         </Route>
          <Route exact path="/store">
-          <GameStore games = {filteredGames} onChangeGenre={setSearchGenre} searchGenre = {searchGenre}/>
+          <GameStore games = {filteredGames} onChangeGenre={searchGenre} searchGenre = {searchGenre}/>
         </Route>
         <Route exact path="/library">
           <GameLibrary games = {games}/>
