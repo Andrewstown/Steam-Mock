@@ -7,6 +7,10 @@ function UserContainer( {user} ) {
   //setting state to grab the value of our name input
   const [name, setName] = useState("");
 
+function handlePatch() {
+  console.log("patch")
+}
+
   function handleClick() {
     if (clicked == true) {
       setClicked(false);
@@ -22,7 +26,7 @@ function UserContainer( {user} ) {
     const newNameObj = {names: [...name, name]}
     console.log(newNameObj);
 
-        fetch(`/users/${id}`, {
+        fetch(`/users/${user.id}`, {
             method: "PATCH",
             headers: {
                 "Content-type": "application/json"
@@ -56,9 +60,10 @@ function UserContainer( {user} ) {
             <label>change username:
                 <input 
                   type="text"
-                  value= {comment}
+                  value= {name}
                   onChange={(e) => setName(e.target.value)} 
                 />
+              <button onClick={handleSubmit} id="change-name">Submit</button>  
             </label>
           </form>
         </div>
