@@ -22,7 +22,7 @@ function UserContainer( {user} ) {
     const newNameObj = {names: [...name, name]}
     console.log(newNameObj);
 
-        fetch(`http://localhost:4000/users/${id}`, {
+        fetch(`/users/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-type": "application/json"
