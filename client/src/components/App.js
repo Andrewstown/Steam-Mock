@@ -51,7 +51,7 @@ function App() {
     <main>
       <Header />
       <NavBar />
-      <UserContainer users />
+      {/* <UserContainer users /> */}
       <h1>
         <Link to="/">We are better than Steam</Link>
       </h1>
