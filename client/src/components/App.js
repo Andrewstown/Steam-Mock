@@ -20,7 +20,7 @@ function App() {
     fetch("/games")
       .then((r) => r.json())
       .then(data => {
-        // print(data)
+        console.log(data)
         setGames(data)});
   }, []);
 
