@@ -34,19 +34,6 @@ function App() {
   }, []);
 
 
-  
-  // useEffect(() => {
-  //   setUsers({
-  //     id: 1,
-  //     bio: "likes Flatiron",
-  //     img: "https://steamuserimages-a.akamaihd.net/ugc/885384897182110030/F095539864AC9E94AE5236E04C8CA7C2725BCEFF/",
-  //     name: "Duane",
-  //     user_games: "COD, MarioCart, Smash",
-  //     email: "duanegrell@gmail.com",
-  //     password: "helpme"
-  //   })
-  // }, []);
-  // console.log(users)
 
   const filteredGames = games.filter((game) => game.genre.toLowerCase().includes(searchGenre.toLowerCase()))
 
