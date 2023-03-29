@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import GameLibrary from "./GameLibrary";
 
-function GameCard() {
+function GameCard( ) {
   const [{ data: game, error, status }, setGame] = useState({
     data: null,
     error: null,
