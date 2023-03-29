@@ -145,8 +145,8 @@ class UserGame(db.Model, SerializerMixin):
     __tablename__ = 'user_games'
 
     id = db.Column(db.Integer, primary_key=True)
-    last_played = db.Column(db.DateTime)
-    hours_played = db.Column(db.Integer)
+    last_played = db.Column(db.DateTime, server_default=db.func.now())
+    hours_played = db.Column(db.Integer, server_default='0')
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     

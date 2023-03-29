@@ -33,6 +33,15 @@ if __name__ == '__main__':
         UserGame.query.delete()
 
         print('Creating Users...')
+        user = User(
+            bio = 'wow', 
+            img = 'https://avatars.cloudflare.steamstatic.com/25f3c0338b5afa5c85ae84f111177a58e53a061b_full.jpg',
+            name = '!ANDREWSTOWN! FWKZT',
+            email = 'stingeyandrewstown@live.com',
+            password = 'ImNotTellingYouMyPasswordLol',
+            created_at = datetime(2011, 11, 2)
+        )
+        db.session.add(user)
         for i in range(40):
             user = User(
                 bio = f.paragraph(nb_sentences=5), 
