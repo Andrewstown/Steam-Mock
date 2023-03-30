@@ -12,7 +12,7 @@ export default function NavBar({user}){
         <li>
           <NavLink to="/community">Community</NavLink>
         </li>
-        {user ? <li> <NavLink to="/user">Profile</NavLink> </li> : null}
+        {user ? <li> <NavLink to="/profile">Profile</NavLink> </li> : null}
       </ul>
     </nav>
   )

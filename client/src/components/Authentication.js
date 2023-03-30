@@ -35,7 +35,7 @@ function Authentication({updateUser}) {
             .then(r => r.json())
             .then(user => {
                 updateUser(user)
-                history.push('/Profile')
+                history.push('/profile')
             })
         }
     })
