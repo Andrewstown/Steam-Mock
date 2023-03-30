@@ -55,7 +55,7 @@ export default function App(){
           <GameStore games={games.filter(game => game.genre.toLowerCase().includes(searchGenre.toLowerCase()) && game.title.toLowerCase().includes(searchTitle.toLowerCase()))} searchGenre={searchGenre} onChangeGenre={setSearchGenre} searchTitle={searchTitle} onChangedTitle={setSearchTitle}/>
         </Route>
         {user ? <Route exact path="/library">
-          <GameLibrary games = {games}/>
+          <GameLibrary games={games} user={user}/>
         </Route> : null}
         <Route exact path="/community">
           <Community users = {users}/>
@@ -66,7 +66,6 @@ export default function App(){
         <Route exact path="/profile">
           <Profile user={user}/>
         </Route>
-        
         <Route path="*">
             <h1>404 not found</h1>
         </Route> 

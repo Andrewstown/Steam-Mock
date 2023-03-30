@@ -25,25 +25,16 @@ function Header({updateUser, user}) {
 
   return (
     <header className="header">
-      <a href="url" class="button1">install now ⏩ </a>
-      <a className='emailButton' href="url">
-        <img src="https://icon-library.com/images/small-email-icon/small-email-icon-5.jpg" />
-      </a>
       <div class="dropdown">
-        <button class="dropbtn">{user ? user.name : "login"}
-          <i class="fa fa-caret-down"></i>
+        <button class="dropbtn">{user ?
+        <div>
+          <NavLink to="/login" onClick={handleLogout}>Logout</NavLink>
+          <img src={user.img}></img>
+          <p>user.name</p>
+        </div> :
+        <NavLink to="/login">Login</NavLink>}
         </button>
-        <div class="dropdown-content">
-          <li> 
-            <NavLink to="/login">Login</NavLink>
-          </li>
-          {/* <a href="#">Account Details</a> */}
-          <li onClick={handleLogout}>
-            {/* Logout */}
-            <NavLink to="/login">Logout</NavLink>
-          </li>
-        </div>
-      </div>             
+      </div>       
     </header>
     );
 }
