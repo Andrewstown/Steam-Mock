@@ -1,7 +1,10 @@
 import React from "react"
 import GameCard from "./GameCard"
 
-export default function GameStore({games, searchGenre, onChangeGenre, searchTitle, onChangedTitle}){
+export default function GameStore({games, onChangeGenre, onChangedTitle, searchTitle}){
+
+  const cards = games.map(game => <GameCard game={game}/>)
+
   function handleChangeGenre(event) {
     onChangeGenre(event.target.value)
   }
@@ -10,10 +13,10 @@ export default function GameStore({games, searchGenre, onChangeGenre, searchTitl
     onChangedTitle(event.target.value)
   }
 
-  return(
+  return (
     <div className="store">
       <div class="search">
-        <select id="select-genre" class="filter" placeholder="Pick a genre..." onChange={handleChangeGenre} value={searchGenre}>
+        <select id="select-genre" class="filter" placeholder="Pick a genre..." onChange={handleChangeGenre}>
             <option value="">Pick a genre...</option>
             <option value="Indie">Indie</option>
             <option value="Adventure">Adventure</option>
@@ -39,10 +42,10 @@ export default function GameStore({games, searchGenre, onChangeGenre, searchTitl
             <option value="Platformer">Platformer</option>
             <option value="Tower defense">Tower Defense</option>
           </select>
-          <input type="text" className="searchTitle" onChange={handleChangeTitle} value={searchTitle}/>
+          <input type="text" className="searchTitle" onChange = {handleChangeTitle} value = {searchTitle} placeholder="Search Titles"/>
       </div>
       <div>
-        <ul className="cards">{games.map(game => <GameCard game={game}/>)}</ul>
+        <ul className="cards">{cards}</ul>
       </div>
     </div>
   )

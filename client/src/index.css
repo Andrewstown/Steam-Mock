@@ -197,3 +197,29 @@
   background-color: linear-gradient(120DEG, #0087b9, #031538);
 }
 
+
+.searchTitle input[type=text]{
+  width:300px;
+  height:25px;
+  border-radius:25px;
+  border: none;
+
+}
+
+.searchTitle{
+  float:right;
+  margin:7px;
+
+}
+
+.searchTitle button{
+  background-color: #0074D9;
+  color: #f2f2f2;
+  float: right;
+  padding: 5px 10px;
+  margin-right: 16px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+}
+
