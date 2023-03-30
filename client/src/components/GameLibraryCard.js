@@ -2,7 +2,7 @@ import React, {useState} from "react"
 
 export default function GameLibraryCard({game}){
   
-  const[clicked, setClicked] = useState(false);
+  const[clicked, setClicked] = useState(false)
 
   function handleClick() {
     if (clicked == true) {

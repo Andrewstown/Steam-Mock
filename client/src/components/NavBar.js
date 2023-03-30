@@ -1,22 +1,18 @@
 import React from "react"
 import {NavLink} from "react-router-dom"
 
-export default function NavBar(){
+export default function NavBar({user}){
   return (
     <nav className="topnav">
       <ul>
         <li>
           <NavLink to="/store">Store</NavLink>
         </li>
-        <li>
-          <NavLink to="/library">Library</NavLink>
-        </li>
+        {user ? <li><NavLink to="/library">Library</NavLink></li> : null}
         <li>
           <NavLink to="/community">Community</NavLink>
         </li>
-        <li>
-          <NavLink to="/profile">Profile</NavLink>
-        </li>
+        {user ? <li> <NavLink to="/user">Profile</NavLink> </li> : null}
       </ul>
     </nav>
   )
