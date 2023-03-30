@@ -21,7 +21,22 @@ function Authentication({updateUser}) {
     //         name:"",
     //         email:""
     //     },
-    //     validationSchema: formSchema
+    //     validationSchema: formSchema,
+
+    //     onSubmit: (values) => {
+    //         fetch(signUp ? '/user': '/login', {
+    //             meth: "POST",
+    //             headers: {
+    //                 "Content-Type":"application/json"                    
+    //             },
+    //             body: JSON.stringify(values)
+    //         })
+    //         .then(r => r.json())
+    //         .then(user => {
+    //             updateUser(user)
+    //             history.push('/')
+    //         })
+    //     }
     // })
 
  
