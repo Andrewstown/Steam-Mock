@@ -36,9 +36,20 @@ if __name__ == '__main__':
         user = User(
             bio = 'wow', 
             img = 'https://avatars.cloudflare.steamstatic.com/25f3c0338b5afa5c85ae84f111177a58e53a061b_full.jpg',
-            name = '!ANDREWSTOWN! FWKZT',
+            name = 'Andrew',
             email = 'stingeyandrewstown@live.com',
-            password = 'ImNotTellingYouMyPasswordLol',
+            password = '123',
+            created_at = datetime(2011, 11, 2)
+        )
+        db.session.add(user)
+
+        print('Creating Users...')
+        user = User(
+            bio = 'just happy to be here', 
+            img = 'https://pbs.twimg.com/profile_images/1599217365056618498/RdhuG2UZ_400x400.jpg',
+            name = 'Jim',
+            email = 'jim.j.brennan@gmail.com',
+            password = '123',
             created_at = datetime(2011, 11, 2)
         )
         db.session.add(user)
