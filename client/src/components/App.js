@@ -9,7 +9,7 @@ import Users from "./Users";
 import NavBar from "./NavBar";
 import Header from "./Header"
 import Home from "./Home"
-import Authentication from "./Authenticaiton";
+import Authentication from "./Authentication";
 
 function App() {
 

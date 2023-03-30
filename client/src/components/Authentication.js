@@ -16,28 +16,28 @@ function Authentication({updateUser}) {
         email: yup.string().email()
     })
 
-    // const formik = useFormik({
-    //     initialValues:{
-    //         name:"",
-    //         email:""
-    //     },
-    //     validationSchema: formSchema,
-
-    //     onSubmit: (values) => {
-    //         fetch(signUp ? '/user': '/login', {
-    //             meth: "POST",
-    //             headers: {
-    //                 "Content-Type":"application/json"                    
-    //             },
-    //             body: JSON.stringify(values)
-    //         })
-    //         .then(r => r.json())
-    //         .then(user => {
-    //             updateUser(user)
-    //             history.push('/')
-    //         })
-    //     }
-    // })
+    const formik = useFormik({
+        initialValues:{
+            name:"",
+            password:""
+        },
+        validationSchema: formSchema,
+        onSubmit: (values) => {
+            alert(values)
+            fetch(signUp ? '/user': '/login', {
+                method: "POST",
+                headers: {
+                    "Content-Type":"application/json"                    
+                },
+                body: JSON.stringify(values)
+            })
+            .then(r => r.json())
+            .then(user => {
+                updateUser(user)
+                history.push('/')
+            })
+        }
+    })
 
  
     return (
@@ -45,21 +45,21 @@ function Authentication({updateUser}) {
         <h2>Please Log in or Sign up!</h2>
         <h2>{signUp?'Already a member?':'Not a member?'}</h2>
         <button onClick={handleClick}>{signUp?'Log In!':'Register now!'}</button>
-        <Form onSubmit={console.log}>
+        <form onSubmit={formik.handleSubmit}>
         <label>
           Username
           </label>
-        <input type='text' name='name' value={'name'} onChange={console.log} />
+        <input type='text' name='name' value={formik.values.name} onChange={formik.handleChange} />
         {signUp&&(
           <>
           <label>
-          Email
+          Password
           </label>
-          <input type='text' name='email' value={'email'} onChange={console.log} />
+          <input type='text' name='password' value={formik.values.password} onChange={formik.handleChange} />
           </>
         )}
         <input type='submit' value={signUp?'Sign Up!':'Log In!'} />
-      </Form>
+      </form>
         </>
     )
 }
