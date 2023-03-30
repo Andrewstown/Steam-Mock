@@ -47,13 +47,22 @@ export default function App(){
   const updateUsers = user => setUsers(user)
   const updateUser = user => setUser(user)
 
-  if(!users) return (
+  if(!user) return (
     <main className="app">
     <Header updateUser={updateUser} />
     <NavBar />
     <Switch>
       <Route exact path="/login">
           <Authentication updateUser={updateUser}/>
+        </Route>
+        <Route exact path="/store">
+          <GameStore games={games.filter(game => game.genre.toLowerCase().includes(searchGenre.toLowerCase()) && game.title.toLowerCase().includes(searchTitle.toLowerCase()))} searchGenre={searchGenre} onChangeGenre={setSearchGenre} searchTitle={searchTitle} onChangedTitle={setSearchTitle}/>
+        </Route>
+        <Route exact path="/library">
+          <GameLibrary games = {games}/>
+        </Route>
+        <Route exact path="/community">
+          <Community users = {users}/>
         </Route>
     </Switch>
   </main>
