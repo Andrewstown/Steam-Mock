@@ -1,7 +1,7 @@
 /* Add a black background color to the top navigation */
 .topnav {
     /* background-color: #456847; */
-    background-image: linear-gradient(120DEG, #00ADEE, #000000);
+    background-image: linear-gradient(120DEG, #0087b9, #031538);
     opacity: 100%;
     overflow: hidden;
     border-style: solid;
@@ -107,7 +107,7 @@
 
 .header {
   /* background-color: #456847; */
-  background-image: linear-gradient(120DEG, #00ADEE, #000000);
+  background-image: linear-gradient(120DEG, #0087b9, #031538);
   opacity: 100%;
   overflow: hidden;
   border-style: solid;
@@ -148,3 +148,47 @@
   margin:0.4em auto;
   }
 }
+
+.home{
+  background-image: linear-gradient(120DEG, #0087b9, #031538);
+}
+
+.library{
+  background-image: linear-gradient(120DEG, #0087b9, #031538);
+}
+
+.store{
+  background-image: linear-gradient(120DEG, #0087b9, #031538);
+}
+
+/* .community{
+  background-image: linear-gradient(120DEG, #0087b9, #031538);
+} */
+
+.cards__item{
+  display: grid;
+  grid-template-rows: max-content 250px 1fr;
+  position: relative;
+  object-position: center;
+}
+
+.card__image{
+  object-fit: cover;
+  /* object-position: 75% 50%; */
+  width: 75%;
+  height: 96.9%;
+  box-shadow: 2px 5px 13px rgb(152, 152, 153);
+  border-style: ridge;
+  border-width: 10px;
+  border-color: #6694d5;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.gameDiv{
+  display: grid;
+  grid-template-rows: max-content 250px 1fr;
+  position: relative;
+  object-position: center;
+}
+

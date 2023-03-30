@@ -6,7 +6,7 @@ function GameCard({ game }) {
 
   return (
     <div className="gameDiv">
-    <li className="card">
+    <li className="cards__item">
       <h1>{game.title}</h1>
       <p className="genreLabel">Genre: {game.genre}</p>
       <img 

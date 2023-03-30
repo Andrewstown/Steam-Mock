@@ -20,7 +20,7 @@ function GameStore({ games, searchGenre, onChangeGenre, onChangedTitle, searchTi
 
 
   return (
-    <div>
+    <div className="store">
       <div class="search">
         <select id="select-genre" class="filter" placeholder="Pick a genre..." onChange={handleChangeGenre}>
             <option value="">Pick a genre...</option>
