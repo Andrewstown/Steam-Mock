@@ -51,10 +51,10 @@ function Authentication({updateUser}) {
           Name
           </label>
         <input type='text' name='name' value={formik.values.name} onChange={formik.handleChange} />
-        <label>
+        {/* <label>
           Email
           </label>
-        <input type='text' email='email' value={formik.values.email} onChange={formik.handleChange} />        
+        <input type='text' email='email' value={formik.values.email} onChange={formik.handleChange} />         */}
           <>
           <label>
           Password
