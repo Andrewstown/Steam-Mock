@@ -7,6 +7,7 @@ import Community from "./Community"
 import GameStore from "./GameStore"
 import GameLibrary from "./GameLibrary"
 import Authentication from "./Authentication"
+import Profile from "./Profile"
 
 export default function App(){
 
@@ -75,6 +76,10 @@ export default function App(){
         <Route exact path="/login">
           <Authentication updateUser={updateUser}/>
         </Route>
+        <Route exact path="/profile">
+          <Profile user={user}/>
+        </Route>
+        
         <Route path="*">
             <h1>404 not found</h1>
         </Route> 

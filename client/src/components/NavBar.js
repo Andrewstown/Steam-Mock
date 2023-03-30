@@ -15,7 +15,7 @@ export default function NavBar(){
           <NavLink to="/community">Community</NavLink>
         </li>
         <li>
-          <NavLink to="/user">Profile</NavLink>
+          <NavLink to="/profile">Profile</NavLink>
         </li>
       </ul>
     </nav>
