@@ -11,12 +11,12 @@ function Login( props ) {
       <form onSubmit={handleSubmit}>
         <input 
           type="text" 
-          className="searchTerm"
+          className="searchUser"
           placeholder="Name"
-          onChange={event => props.setSearchUser(event.target.value)} />
+          onChange={event => props.setSearchUser(event.target.value)} /> 
         <input 
           type="text" 
-          className="searchTerm"
+          className="searchPassword"
           placeholder="Password"
           onChange={event => props.setSearchPassword(event.target.value)} />
         <button type="submit">Login</button>

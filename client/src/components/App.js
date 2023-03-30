@@ -10,14 +10,21 @@ import NavBar from "./NavBar";
 import Header from "./Header"
 import Home from "./Home"
 import Login from "./Login";
+import Authentication from "./Authenticaiton";
 
 function App() {
 
   const [games, setGames] = useState([])
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState(null)
 
   const [searchGenre, setSearchGenre] = useState("");
   const [searchTitle, setSearchTitle] = useState("");
+
+  const fetchUser = () => {
+
+  }
+
+  // const updateUser = (user) => setUser(user)
 
 
   useEffect(() => {
@@ -64,8 +71,8 @@ function App() {
           <Users users = {users}/>
         </Route>
         <Route exact path="/login">
-          <Login/>
-          <Users users = {users}/>
+          <Authentication />
+          {/* upupdateUser={updateUser}  might need to add to authenticaiton above!!!!!! about*/}
         </Route>
         <Route path="*">
             <h1>404 not found</h1>
