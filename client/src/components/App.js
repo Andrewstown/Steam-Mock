@@ -12,9 +12,22 @@ export default function App(){
 
   const [games, setGames] = useState([])
   const [users, setUsers] = useState(null)
+  const [user, setUser] = useState(null)
 
   const [searchGenre, setSearchGenre] = useState("")
   const [searchTitle, setSearchTitle] = useState("")
+
+  const fetchUser = () => {
+    fetch('/authorized')
+    .then (r => {
+      if (r.ok) {
+        r.json().then(user => setUser (user))
+      }else {
+        setUser(null)
+      }
+    })
+
+  }
 
   useEffect(() => {
     fetch("/games")
@@ -31,10 +44,23 @@ export default function App(){
   }, [])
 
   const updateUsers = user => setUsers(user)
+  const updateUser = user => setUser(user)
+
+  if(!users) return (
+    <main className="app">
+    <Header updateUser={updateUser} />
+    <NavBar />
+    <Switch>
+      <Route exact path="/login">
+          <Authentication updateUser={updateUser}/>
+        </Route>
+    </Switch>
+  </main>
+  )
 
   return (
     <main className="app">
-      <Header updateUsers={updateUsers}/>
+      <Header updateUser={updateUser} user={user}/>
       <NavBar/>
       <Switch>
         <Route exact path="/store">
@@ -47,7 +73,7 @@ export default function App(){
           <Community users = {users}/>
         </Route>
         <Route exact path="/login">
-          <Authentication updateUsers={updateUsers}/>
+          <Authentication updateUser={updateUser}/>
         </Route>
         <Route path="*">
             <h1>404 not found</h1>

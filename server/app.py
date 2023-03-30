@@ -11,6 +11,8 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
+app.config['SECRET_KEY'] = "abcd"
+
 
 api = Api(app)
 db.init_app(app)
@@ -252,16 +254,30 @@ class UserGameById(Resource):
     def delete(self, id):
         usergame = UserGame.query.filter_by(id = id).first()
 
-        if not review:
+        if not usergame:
             return make_response({'error': 'UserGame Not Found!'}, 404)
         
-        db.session.delete(review)
+        db.session.delete(usergame)
         db.session.commit()
 
         return make_response('', 204)
     
 api.add_resource(UserGameById, '/usergames/<int:id>')
 
+class Login(Resource):
+    def post(self):
+        user = User.query.filter_by(name=request.get_json()['name']).first()
+        
+        if not user:
+            return make_response({'error': 'Invalid Username/Password'}, 403)
+
+        session['user_id'] = user.id
+        response = make_response(
+            user.to_dict(),
+            200
+        )
+        return response
+api.add_resource(Login, '/login')
 
 class Logout(Resource):
     def delete(self):
@@ -270,6 +286,20 @@ class Logout(Resource):
         return response
 
 api.add_resource(Logout, '/logout')
+
+class AuthorizedSession(Resource):
+    def get(self):
+        user= User.query.filter_by(id=session.get('user_id')).first()
+        if user:
+            response = make_response(
+                user.to_dict(),
+                200
+            )
+            return response
+        else:
+            abort(401, "Unauthorized")
+
+api.add_resource(AuthorizedSession, '/authorized')
 
 
 
