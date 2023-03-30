@@ -3,6 +3,8 @@ import GameLibraryCard from "./GameLibraryCard";
 
 export default function GameLibrary({games, user}){
   const [userGames, setUserGames] = useState([])
+  const [game, setGame] = useState(null)
+  const [userGame, setUserGame] = useState(null)
   
   useEffect(() => {
     fetch(`/users/${user.id}`)
@@ -12,8 +14,12 @@ export default function GameLibrary({games, user}){
       })
   }, [])
 
-  /*not sure where I'm pulling this id from...we will also need to change games => filteredGames before the map on line 9
-  const filteredGames = games.filter(games.user_id == id).all()*/
+
+  function setG(g, uG) {
+    setGame(g);
+    setUserGame(uG)
+  }
+  //
 
   // const cards = games.map((game) => (
   //   <GameLibraryCard game = {game}/>
@@ -21,7 +27,8 @@ export default function GameLibrary({games, user}){
 
   return (
     <div className="gameDiv">
-      {userGames && userGames.length > 0 ? userGames.map(usergame => <GameLibraryCard usergame={usergame}/>) : null}
+      {userGames && userGames.length > 0 ? userGames.map(usergame => <GameLibraryCard usergame={usergame} setG = {setG}/>) : null}
+      {game ? <p>{game.title}</p>: null}
     </div>
   )
 }
