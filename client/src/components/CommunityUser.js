@@ -1,30 +1,27 @@
-import React, {useState} from "react";
+import React, {useState} from "react"
 
-function UserContainer( {user} ) {
-  console.log(user)
-  const[clicked, setClicked] = useState(false);
+export default function UserContainer({user}){
+  const[clicked, setClicked] = useState(false)
 
-  //setting state to grab the value of our name input
-  const [name, setName] = useState("");
+  const [name, setName] = useState("")
 
-function handlePatch() {
-  console.log("patch")
-}
+  function handlePatch() {
+    console.log("patch")
+  }
 
   function handleClick() {
     if (clicked == true) {
-      setClicked(false);
+      setClicked(false)
     }
     else{
-        setClicked(true);
+        setClicked(true)
     }
   }
 
-  // this is the patch I used in Phase 2...trying to repurpose it. I think ...name is probably wrong? 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     const newNameObj = {names: [...name, name]}
-    console.log(newNameObj);
+    console.log(newNameObj)
 
         fetch(`/users/${user.id}`, {
             method: "PATCH",
@@ -34,13 +31,13 @@ function handlePatch() {
             body: JSON.stringify(newNameObj)
             })
             .then(response => {
-                console.log(response.status); 
-                return response.json();
+                console.log(response.status)
+                return response.json()
             })
-            .then(data => handlePatch(data));
+            .then(data => handlePatch(data))
   }
 
-  return (
+  return(
     <li className="cards__item">
       <div className="card">
         <img
@@ -55,7 +52,7 @@ function handlePatch() {
           <div className="card__detail">
           </div>
         </div>
-        <div className='userForm'>
+        {/* <div className='userForm'>
           <form onSubmit={handleSubmit} className="form">
             <label>change username:
                 <input 
@@ -66,10 +63,8 @@ function handlePatch() {
               <button onClick={handleSubmit} id="change-name">Submit</button>  
             </label>
           </form>
-        </div>
+        </div> */}
       </div>
     </li>
-  );
+  )
 }
-
-export default UserContainer;

@@ -1,14 +1,12 @@
 import React, { useEffect, useReducer, useState } from "react";
 import { Link, Route, Switch } from "react-router-dom";
 
-// import Home from "./Home"
 import GameStore from "./GameStore";
 import GameLibrary from "./GameLibrary";
 import Community from "./Community";
 import Users from "./Users";
 import NavBar from "./NavBar";
 import Header from "./Header"
-import Home from "./Home"
 import Authentication from "./Authentication";
 
 function App() {
@@ -49,9 +47,6 @@ function App() {
     <Header updateUsers={updateUsers} />
     <NavBar />
     <Switch>
-      <Route exact path="/">
-        <Home />
-      </Route>
        <Route exact path="/store">
         <GameStore games = {filteredGamesByGenreTitle} searchGenre = {searchGenre} onChangeGenre={setSearchGenre} searchTitle = {searchTitle} onChangedTitle = {setSearchTitle} />
       </Route>
@@ -76,15 +71,9 @@ function App() {
 
   return (
     <main className="app">
-      <Header updateUsers={updateUsers} />
-      <NavBar />
-      <h1>
-        <Link to="/">Hi Friends</Link>
-      </h1>
+      <Header/>
+      <NavBar/>
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
          <Route exact path="/store">
           <GameStore games = {filteredGamesByGenreTitle} searchGenre = {searchGenre} onChangeGenre={setSearchGenre} searchTitle = {searchTitle} onChangedTitle = {setSearchTitle} />
         </Route>

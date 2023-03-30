@@ -1,25 +1,19 @@
+import React from "react"
+import GameCard from "./GameCard"
 
-import React from "react";
-import GameCard from "./GameCard";
+export default function GameStore({games, onChangeGenre, onChangedTitle, searchTitle}){
 
-function GameStore({ games, searchGenre, onChangeGenre, onChangedTitle, searchTitle }) {
+  const cards = games.map(game => <GameCard game={game}/>)
 
-  const cards = games.map((game) => (
-    <GameCard game = {game}/>
-  ))
-
- // eventListeners go here
     function handleChangeGenre(event) {
-      onChangeGenre(event.target.value);
-    };
+      onChangeGenre(event.target.value)
+    }
 
     function handleChangeTitle(event) {
-      onChangedTitle(event.target.value);
-    };
+      onChangedTitle(event.target.value)
+    }
 
-
-
-  return (
+  return(
     <div>
       <div class="search">
         <select id="select-genre" class="filter" placeholder="Pick a genre..." onChange={handleChangeGenre}>
@@ -53,8 +47,6 @@ function GameStore({ games, searchGenre, onChangeGenre, onChangedTitle, searchTi
       <div>
         <ul className="cards">{cards}</ul>
       </div>
-  </div>
-  );
+    </div>
+  )
 }
-
-export default GameStore;
