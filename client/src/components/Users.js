@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import UserContainer from "./UserContainer";
+import UserContainer from "./CommunityUser";
 import './Users.css'
 
 function Users( {users} ) {

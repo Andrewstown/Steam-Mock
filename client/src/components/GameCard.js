@@ -1,26 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import GameLibrary from "./GameLibrary";
+import React, { useEffect, useState } from "react"
 
-function GameCard({ game }) {
-
-  return (
+export default function GameCard({game}){
+  return(
     <div className="gameDiv">
-    <li className="cards__item">
-      <h1>{game.title}</h1>
-      <p className="genreLabel">Genre: {game.genre}</p>
-      <img 
-      src={game.img} 
-      alt={game.title} 
-      />
-      <p className="priceLabel">Price: {game.price}</p>
-      <div className="description">
-        <h2>Description</h2>
-          <p>{game.description}</p>
-      </div>
-    </li>
+      <li className="card">
+        <img src={game.img} alt={game.title}/>
+        <h1>{game.title}</h1>
+        <p className="priceLabel">${game.price}</p>
+        <p className="genreLabel">Genre: {game.genre}</p>
+      </li>
     </div>
-  );
+  )
 }
-
-export default GameCard;

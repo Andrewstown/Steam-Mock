@@ -1,7 +1,28 @@
 import React from "react";
 import { NavLink } from "react-router-dom"
+import { useState } from 'react'
+import {Link} from 'react-router-dom'
+import styled from 'styled-components'
+import { useHistory } from 'react-router-dom'
 
-function Header() {
+
+function Header({updateUsers}) {
+
+  const history = useHistory()
+
+  const handleLogout = () => {
+    fetch('/logout',{
+      method: 'DELETE'
+    })
+    .then(r => {
+      if(r.ok){
+        updateUsers(null)
+        history.push('/login')
+      }
+    })
+
+  }
+
   return (
     <header className="header">
       <a href="url" class="button1">install now ⏩ </a>
@@ -16,7 +37,11 @@ function Header() {
           <li> 
             <NavLink to="/login">Login</NavLink>
           </li>
-          <a href="#">Account Details</a>
+          {/* <a href="#">Account Details</a> */}
+          <li onClick={handleLogout}>
+            {/* Logout */}
+            <NavLink to="/login">Logout</NavLink>
+          </li>
         </div>
       </div>             
     </header>

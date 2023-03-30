@@ -5,7 +5,7 @@ import { useFormik } from "formik"
 import * as yup from "yup"
 
 
-function Authentication({updateUser}) {
+function Authentication({updateUsers}) {
     const [signUp, setSignUp] = useState(false)
     const history = useHistory()
 
@@ -23,7 +23,6 @@ function Authentication({updateUser}) {
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            alert(values)
             fetch(signUp ? '/user': '/login', {
                 method: "POST",
                 headers: {
@@ -33,7 +32,7 @@ function Authentication({updateUser}) {
             })
             .then(r => r.json())
             .then(user => {
-                updateUser(user)
+                updateUsers(user)
                 history.push('/')
             })
         }
@@ -45,9 +44,9 @@ function Authentication({updateUser}) {
         <h2>Please Log in or Sign up!</h2>
         <h2>{signUp?'Already a member?':'Not a member?'}</h2>
         <button onClick={handleClick}>{signUp?'Log In!':'Register now!'}</button>
-        <form onSubmit={formik.handleSubmit}>
+        <Form onSubmit={formik.handleSubmit}>
         <label>
-          Username
+          Name
           </label>
         <input type='text' name='name' value={formik.values.name} onChange={formik.handleChange} />
         {signUp&&(
@@ -59,7 +58,7 @@ function Authentication({updateUser}) {
           </>
         )}
         <input type='submit' value={signUp?'Sign Up!':'Log In!'} />
-      </form>
+      </Form>
         </>
     )
 }
@@ -83,33 +82,3 @@ input[type=submit]{
   margin-bottom:10px;
 }
 `
-
-
-
-
-
- 
-//     return (
-//         <> 
-//         <h2 style={{color:'red'}}> {'Errors Here!!'}</h2>
-//         <h2>Please Log in or Sign up!</h2>
-//         <h2>{signUp?'Already a member?':'Not a member?'}</h2>
-//         <button onClick={handleClick}>{signUp?'Log In!':'Register now!'}</button>
-//         <Form onSubmit={console.log}>
-//         <label>
-//           Username
-//           </label>
-//         <input type='text' name='name' value={formik.values.name} onChange={formik.handleChange} />
-//         {signUp&&(
-//           <>
-//           <label>
-//           Password
-//           </label>
-//           <input type='text' name='password' value={formik.values.password} onChange={formik.handleChange} />
-//           </>
-//         )}
-//         <input type='submit' value={signUp?'Sign Up!':'Log In!'} />
-//       </Form>
-//         </>
-//     )
-// }

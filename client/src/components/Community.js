@@ -1,17 +1,11 @@
-import React, {useState} from "react";
-import UserContainer from "./UserContainer";
+import React, {useState} from "react"
+import UserContainer from "./CommunityUser"
 import './Users.css'
 
-function Users( {users} ) {
-  
-  console.log(users)
-  const usercards = users.map((user) => (
-    <UserContainer user = {user}/>
-  ))
+export default function Users({users}){
+  const usercards = users.map(user => <UserContainer user = {user}/>)
 
-  return (
+  return(
     <ul className="cards">{usercards}</ul>
-  );
+  )
 }
-
-export default Users;
