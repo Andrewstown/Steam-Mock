@@ -5,7 +5,7 @@ import { useFormik } from "formik"
 import * as yup from "yup"
 
 
-function Authentication({updateUsers}) {
+function Authentication({updateUser}) {
     const [signUp, setSignUp] = useState(false)
     const history = useHistory()
 
@@ -23,7 +23,9 @@ function Authentication({updateUsers}) {
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            fetch(signUp ? '/user': '/login', {
+            console.log(values)
+
+            fetch('/login', {
                 method: "POST",
                 headers: {
                     "Content-Type":"application/json"                    
@@ -32,7 +34,7 @@ function Authentication({updateUsers}) {
             })
             .then(r => r.json())
             .then(user => {
-                updateUsers(user)
+                updateUser(user)
                 history.push('/')
             })
         }
@@ -45,18 +47,20 @@ function Authentication({updateUsers}) {
         <h2>{signUp?'Already a member?':'Not a member?'}</h2>
         <button onClick={handleClick}>{signUp?'Log In!':'Register now!'}</button>
         <Form onSubmit={formik.handleSubmit}>
-        <label>
+          <label>
           Name
           </label>
         <input type='text' name='name' value={formik.values.name} onChange={formik.handleChange} />
-        {signUp&&(
+        <label>
+          Email
+          </label>
+        <input type='text' email='email' value={formik.values.email} onChange={formik.handleChange} />        
           <>
           <label>
           Password
           </label>
           <input type='text' name='password' value={formik.values.password} onChange={formik.handleChange} />
           </>
-        )}
         <input type='submit' value={signUp?'Sign Up!':'Log In!'} />
       </Form>
         </>

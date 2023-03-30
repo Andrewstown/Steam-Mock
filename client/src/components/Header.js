@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 
 
-function Header({updateUsers}) {
+function Header({updateUser, user}) {
 
   const history = useHistory()
 
@@ -16,8 +16,8 @@ function Header({updateUsers}) {
     })
     .then(r => {
       if(r.ok){
-        updateUsers(null)
-        history.push('/login')
+        updateUser(null)
+        history.push('/store')
       }
     })
 
@@ -30,7 +30,7 @@ function Header({updateUsers}) {
         <img src="https://icon-library.com/images/small-email-icon/small-email-icon-5.jpg" />
       </a>
       <div class="dropdown">
-        <button class="dropbtn">user_name
+        <button class="dropbtn">{user ? user.name : "login"}
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
