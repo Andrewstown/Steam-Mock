@@ -11,7 +11,9 @@ function GameLibrary({ games }) {
   ))
 
   return (
-    <ul className="cards">{cards}</ul>
+    <div className="gameDiv">
+      <ul className="cards">{cards}</ul>
+    </div>
   );
 }
 

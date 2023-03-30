@@ -15,7 +15,7 @@ function GameLibraryCard ( {game} ) {
 
   return (
     <li className="gamecards__item">
-      <div className="gamecard">
+      <div className="card">
         <img
           onClick = {handleClick}
           src={game.img}
