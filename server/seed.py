@@ -54,7 +54,7 @@ if __name__ == '__main__':
             db.session.add(user)
 
         print('Creating Games...')
-        for i in range(30):
+        for i in range(60):
             game = Game(
                 img = gameTemp['images'][randint(0, len(gameTemp['images'])-1)],
                 price = gameTemp['prices'][randint(0, len(gameTemp['prices'])-1)],
