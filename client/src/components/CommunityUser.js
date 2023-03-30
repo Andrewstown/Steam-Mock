@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 
-export default function UserContainer({user}){
+export default function CommunityUser({user}){
   const[clicked, setClicked] = useState(false)
 
   const [name, setName] = useState("")

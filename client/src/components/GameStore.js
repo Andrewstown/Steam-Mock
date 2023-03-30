@@ -5,15 +5,13 @@ export default function GameStore({games, onChangeGenre, onChangedTitle, searchT
 
   const cards = games.map(game => <GameCard game={game}/>)
 
-    function handleChangeGenre(event) {
-      onChangeGenre(event.target.value)
-    }
+  function handleChangeGenre(event) {
+    onChangeGenre(event.target.value)
+  }
 
-    function handleChangeTitle(event) {
-      onChangedTitle(event.target.value)
-    }
-
-
+  function handleChangeTitle(event) {
+    onChangedTitle(event.target.value)
+  }
 
   return (
     <div className="store">
