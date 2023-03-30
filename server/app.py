@@ -263,5 +263,15 @@ class UserGameById(Resource):
 api.add_resource(UserGameById, '/usergames/<int:id>')
 
 
+class Logout(Resource):
+    def delete(self):
+        session['user_id'] = None
+        response = make_response('',204)
+        return response
+
+api.add_resource(Logout, '/logout')
+
+
+
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

@@ -19,11 +19,11 @@ function App() {
   const [searchGenre, setSearchGenre] = useState("");
   const [searchTitle, setSearchTitle] = useState("");
 
-  const fetchUser = () => {
+  const fetchUsers = () => {
 
   }
 
-  // const updateUser = (user) => setUser(user)
+  const updateUsers = (user) => setUsers(user)
 
 
   useEffect(() => {
@@ -44,11 +44,39 @@ function App() {
   const filteredGames = games.filter((game) => game.genre.toLowerCase().includes(searchGenre.toLowerCase()))
   const filteredGamesByGenreTitle = filteredGames.filter((game) => game.title.toLowerCase().includes(searchTitle.toLowerCase()))
 
-
+  if(!users) return (
+    <main className="app">
+    <Header updateUsers={updateUsers} />
+    <NavBar />
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+       <Route exact path="/store">
+        <GameStore games = {filteredGamesByGenreTitle} searchGenre = {searchGenre} onChangeGenre={setSearchGenre} searchTitle = {searchTitle} onChangedTitle = {setSearchTitle} />
+      </Route>
+      <Route exact path="/library">
+        <GameLibrary games = {games}/>
+      </Route>
+      <Route exact path="/community">
+        <Community users = {users}/>
+      </Route>
+      <Route exact path="/user">
+        <Users users = {users}/>
+      </Route>
+      <Route exact path="/login">
+        <Authentication updateUsers={updateUsers}/>
+      </Route>
+      <Route path="*">
+          <h1>404 not found</h1>
+      </Route> 
+    </Switch>
+  </main>
+  )
 
   return (
     <main className="app">
-      <Header />
+      <Header updateUsers={updateUsers} />
       <NavBar />
       <h1>
         <Link to="/">Hi Friends</Link>
@@ -70,8 +98,7 @@ function App() {
           <Users users = {users}/>
         </Route>
         <Route exact path="/login">
-          <Authentication />
-          {/* upupdateUser={updateUser}  might need to add to authenticaiton above!!!!!! about*/}
+          <Authentication updateUsers={updateUsers}/>
         </Route>
         <Route path="*">
             <h1>404 not found</h1>
