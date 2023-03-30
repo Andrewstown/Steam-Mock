@@ -18,6 +18,11 @@ export default function App(){
   const [searchGenre, setSearchGenre] = useState("")
   const [searchTitle, setSearchTitle] = useState("")
 
+
+  useEffect(() => {
+    fetchUser()
+  },[])
+
   const fetchUser = () => {
     fetch('/authorized')
     .then (r => {
@@ -43,7 +48,7 @@ export default function App(){
         setUsers(data)})
   }, [])
 
-  const updateUsers = user => setUsers(user)
+  // const updateUsers = user => setUsers(user)
   const updateUser = user => setUser(user)
 
   return(

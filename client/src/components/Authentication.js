@@ -43,6 +43,7 @@ function Authentication({updateUser}) {
  
     return (
         <> 
+        {Object.values(formik.errors).map(error => <h2 style={{color:'red'}}> {error}</h2>)}
         <h2>Please Log in or Sign up!</h2>
         <h2>{signUp?'Already a member?':'Not a member?'}</h2>
         <button onClick={handleClick}>{signUp?'Log In!':'Register now!'}</button>
