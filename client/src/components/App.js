@@ -9,6 +9,7 @@ import Users from "./Users";
 import NavBar from "./NavBar";
 import Header from "./Header"
 import Home from "./Home"
+import Login from "./Login";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
 
   const [searchGenre, setSearchGenre] = useState("");
   const [searchTitle, setSearchTitle] = useState("");
+
 
   useEffect(() => {
     fetch("/games")
@@ -33,11 +35,9 @@ function App() {
         setUsers(data)});
   }, []);
 
-
-
   const filteredGames = games.filter((game) => game.genre.toLowerCase().includes(searchGenre.toLowerCase()))
-
   const filteredGamesByGenreTitle = filteredGames.filter((game) => game.title.toLowerCase().includes(searchTitle.toLowerCase()))
+
 
 
   return (
@@ -61,6 +61,10 @@ function App() {
           <Community users = {users}/>
         </Route>
         <Route exact path="/user">
+          <Users users = {users}/>
+        </Route>
+        <Route exact path="/login">
+          <Login/>
           <Users users = {users}/>
         </Route>
         <Route path="*">

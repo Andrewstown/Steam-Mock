@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom"
 
 function Header() {
   return (
@@ -12,9 +13,10 @@ function Header() {
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-          <a href="#">View Profile</a>
+          <li> 
+            <NavLink to="/login">Login</NavLink>
+          </li>
           <a href="#">Account Details</a>
-          <a href="#">Login</a>
         </div>
       </div>             
     </header>

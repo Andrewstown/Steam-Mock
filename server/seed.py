@@ -43,7 +43,6 @@ if __name__ == '__main__':
         )
         db.session.add(user)
 
-        print('Creating Users...')
         user = User(
             bio = 'just happy to be here', 
             img = 'https://pbs.twimg.com/profile_images/1599217365056618498/RdhuG2UZ_400x400.jpg',
@@ -53,6 +52,17 @@ if __name__ == '__main__':
             created_at = datetime(2011, 11, 2)
         )
         db.session.add(user)
+
+        user = User(
+            bio = 'stay struggling', 
+            img = 'https://i.insider.com/5d8b7da12e22af3306052328?width=600&format=jpeg&auto=webp',
+            name = 'duane',
+            email = 'duanegrell@gmail.com',
+            password = '123',
+            created_at = datetime(2011, 11, 2)
+        )
+        db.session.add(user)
+
         for i in range(40):
             user = User(
                 bio = f.paragraph(nb_sentences=5), 
