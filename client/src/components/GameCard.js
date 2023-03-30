@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 
 export default function GameCard({game}){
   return(
@@ -6,8 +6,8 @@ export default function GameCard({game}){
       <li className="card">
         <img src={game.img} alt={game.title}/>
         <h1>{game.title}</h1>
-        <p className="priceLabel">${game.price}</p>
-        <p className="genreLabel">Genre: {game.genre}</p>
+        <p className="priceLabel">{game.price == 0 ? 'Free' : '$' + game.price}</p>
+        <p className="genreLabel">{game.genre}</p>
       </li>
     </div>
   )

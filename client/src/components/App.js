@@ -64,7 +64,7 @@ export default function App(){
       <NavBar/>
       <Switch>
         <Route exact path="/store">
-          <GameStore games = {games.filter(game => game.genre.toLowerCase().includes(searchGenre.toLowerCase()) && game.title.toLowerCase().includes(searchTitle.toLowerCase()))} searchGenre={searchGenre} onChangeGenre={setSearchGenre} searchTitle={searchTitle} onChangedTitle={setSearchTitle}/>
+          <GameStore games={games.filter(game => game.genre.toLowerCase().includes(searchGenre.toLowerCase()) && game.title.toLowerCase().includes(searchTitle.toLowerCase()))} searchGenre={searchGenre} onChangeGenre={setSearchGenre} searchTitle={searchTitle} onChangedTitle={setSearchTitle}/>
         </Route>
         <Route exact path="/library">
           <GameLibrary games = {games}/>
