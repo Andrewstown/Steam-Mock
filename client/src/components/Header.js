@@ -29,7 +29,11 @@ export default  function Header({updateUser, user}) {
             <p>{user.name}</p>
           </> : null}
         </button>
-      </div>       
+      </div>
+      <ul>
+        <h2 className="logo_text">Vapor</h2>
+        <img src="https://cdn.freebiesupply.com/images/large/2x/steam-logo-transparent.png" alt="Smoke" class="logo"></img>
+      </ul>       
     </header>
     )
 }

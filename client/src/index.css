@@ -317,3 +317,17 @@
 .container_review {
   padding: 2px 16px;
 }
+
+/*store cards*/
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+}
+
+.logo_text {
+  text-align: center;
+  color: white
+}
