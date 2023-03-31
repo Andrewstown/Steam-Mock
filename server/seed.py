@@ -6,7 +6,7 @@ from app import app
 from models import db, User, Game, Review, UserGame
 
 userTemp = {
-    'images': ['https://images.wallpapersden.com/image/download/akira-kurusu-hd-persona-5-4k_bWhsaWWUmZqaraWkpJRoZ2WtaGdl.jpg', 'https://i.redd.it/2gpmu2gi5fp81.jpg', 'https://static.wikia.nocookie.net/the-secret-world-of-the-animated-characters/images/1/19/CharlieMagne.jpg/revision/latest/scale-to-width-down/320?cb=20211022144246', 'https://cdn.pixilart.com/photos/large/6b2753d8322e716.jpg', 'https://lumiere-a.akamaihd.net/v1/images/ct_starwarsgalaxyofadventures_chewbaccaddt-17324_e75574c4.jpeg?region=0,0,600,600&width=320', 'https://static.wikia.nocookie.net/battlefordreamisland/images/8/8f/OTKt-nsC_400x400.jpeg/revision/latest/scale-to-width-down/320?cb=20190711143225'],
+    'images': ['https://ih1.redbubble.net/image.1006254060.9061/flat,128x128,075,f-pad,128x128,f8f8f8.jpg', 'https://i.redd.it/2gpmu2gi5fp81.jpg', 'https://styles.redditmedia.com/t5_5cwq5h/styles/communityIcon_3zly5qgpzf081.png', 'https://cdn.pixilart.com/photos/large/6b2753d8322e716.jpg', 'https://lumiere-a.akamaihd.net/v1/images/ct_starwarsgalaxyofadventures_chewbaccaddt-17324_e75574c4.jpeg?region=0,0,600,600&width=320', 'https://cdn130.picsart.com/338829095079201.png?type=webp&to=crop&r=256'],
     'passwords': ['password123', 'yullneverGETTHIS!', 'baseball2005', 'iHATEjustice123321', 'mariokart8iscool', 'wonder543women']
 }
 
