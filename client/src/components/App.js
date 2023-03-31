@@ -40,13 +40,15 @@ export default function App(){
   }, [])
 
   useEffect(() => {
-    fetch("/users")
-      .then(r => r.json())
-      .then(data => {
-        setUsers(data)})
+    updateUsers()
   }, [])
 
-  // const updateUsers = user => setUsers(user)
+  const updateUsers = () => {
+    fetch("/users", )
+    .then(r => r.json())
+    .then(data => {
+      setUsers(data)})
+  }
   const updateUser = user => setUser(user)
 
   return(
@@ -67,7 +69,7 @@ export default function App(){
           <Community users = {users}/>
         </Route>
         <Route exact path="/login">
-          <Authentication updateUser={updateUser}/>
+          <Authentication updateUser={updateUser} updateUsers={updateUsers}/>
         </Route>
         <Route exact path="/profile">
           <Profile user={user}/>

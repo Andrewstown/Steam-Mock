@@ -5,7 +5,7 @@ import { useFormik } from "formik"
 import * as yup from "yup"
 
 
-function Authentication({updateUser}) {
+function Authentication({updateUser, updateUsers}) {
     const [signUp, setSignUp] = useState(false)
     const history = useHistory()
 
@@ -13,18 +13,35 @@ function Authentication({updateUser}) {
 
     const formSchema = yup.object().shape({
         name: yup.string().required("please enter a username"),
-        email: yup.string().email()
+        email: yup.string().email(),
+        password: yup.string().required("please enter password")
     })
 
+    
     const formik = useFormik({
         initialValues:{
             name:"",
+            email:"",
             password:""
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            console.log(values)
-
+          if (signUp){
+            fetch('/users', {
+                method: "POST",
+                headers: {
+                    "Content-Type":"application/json"                    
+                },
+                body: JSON.stringify(values)
+            })
+            .then(r => r.json())
+            .then(user => {
+                updateUsers(user)
+                updateUser(user)
+                history.push('/login')
+            })
+          }
+          else {
             fetch('/login', {
                 method: "POST",
                 headers: {
@@ -37,8 +54,12 @@ function Authentication({updateUser}) {
                 updateUser(user)
                 history.push('/store')
             })
+          }
+
         }
     })
+
+
 
  
     return (
