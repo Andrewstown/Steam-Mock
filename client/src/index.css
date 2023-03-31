@@ -183,6 +183,16 @@
   border-color: #6694d5;
   border-radius: 3px;
   cursor: pointer;
+  position: relative;
+  left: 50px;
+}
+
+.card__title{
+  text-align: center
+}
+
+.card__text{
+  text-align: center
 }
 
 .gameDiv{
