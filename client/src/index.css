@@ -233,3 +233,16 @@
   
   .div1 { grid-area: 1 / 1 / 2 / 2; }
   .div2 { grid-area: 1 / 2 / 2 / 3; }
+
+.header__image{
+  object-fit: cover;
+  /* object-position: 75% 50%; */
+  width: 100px;
+  height: 100px;
+  box-shadow: 2px 5px 13px rgb(152, 152, 153);
+  border-style: ridge;
+  border-width: 10px;
+  border-color: #6694d5;
+  border-radius: 3px;
+  cursor: pointer;
+}

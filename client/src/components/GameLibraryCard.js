@@ -16,7 +16,7 @@ export default function GameLibraryCard({usergame, setG}){
     setG(game, usergame)
   }
 
-  console.log(game["title"])
+  // console.log(game["title"])
   
   //user_games.game_id = game.id
 

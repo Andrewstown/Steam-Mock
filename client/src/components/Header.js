@@ -29,8 +29,8 @@ function Header({updateUser, user}) {
         <button class="dropbtn">{user ?
         <div>
           <NavLink to="/login" onClick={handleLogout}>Logout</NavLink>
-          <img src={user.img}></img>
-          <p>user.name</p>
+          <img src={user.img} className="header__image"></img>
+          <p>{user.name}</p>
         </div> :
         <NavLink to="/login">Login</NavLink>}
         </button>
