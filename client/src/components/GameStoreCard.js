@@ -33,9 +33,9 @@ export default function GameStoreCard({game, user}){
         <>
           <ul className="card">
             <img src={game.img} alt={game.title}/>
-            <h1>{game.title}</h1>
-            <p className="priceLabel">{game.price === 0 ? 'Free' : '$' + game.price}</p>
-            <p className="genreLabel">{game.genre}</p>
+            <h1 className="store_label">{game.title}</h1>
+            <p className="store_label">{game.price === 0 ? 'Free' : '$' + game.price}</p>
+            <p className="store_label">{game.genre}</p>
             {location.pathname.length > 7 ?
             <>
               <p>{game.studio}</p>
@@ -45,7 +45,7 @@ export default function GameStoreCard({game, user}){
             : null}
           </ul>
           {location.pathname.length > 7 ?
-            <ul className="review">{game.game_reviews.map(review => <ReviewCard review={review}/>)}</ul>
+            <ul className="store_label">{game.game_reviews.map(review => <ReviewCard review={review}/>)}</ul>
           : null}
       </>: null}
     </div>
