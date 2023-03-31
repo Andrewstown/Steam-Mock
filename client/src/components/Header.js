@@ -1,9 +1,7 @@
 import React from "react"
-import {NavLink} from "react-router-dom"
-import {useHistory} from 'react-router-dom'
+import {NavLink, useHistory} from "react-router-dom"
 
-export default  function Header({updateUser, user}) {
-
+export default function Header({updateUser, user}) {
   const history = useHistory()
 
   const handleLogout = () => {
@@ -34,5 +32,5 @@ export default  function Header({updateUser, user}) {
         </div>
       </ul>       
     </header>
-    )
+  )
 }

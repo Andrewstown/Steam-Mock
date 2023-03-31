@@ -4,8 +4,7 @@ import styled from "styled-components";
 import { useFormik } from "formik"
 import * as yup from "yup"
 
-
-function Authentication({updateUser, updateUsers}) {
+export default function Authentication({updateUser, updateUsers}) {
     const [signUp, setSignUp] = useState(false)
     const history = useHistory()
 
@@ -58,42 +57,37 @@ function Authentication({updateUser, updateUsers}) {
 
         }
     })
-
-
-
  
-    return (
-        <> 
-          {Object.values(formik.errors).map(error => <h2 style={{color:'red'}}> {error}</h2>)}
-          <h2>Please Log in or Sign up!</h2>
-          <h2>{signUp?'Already a member?':'Not a member?'}</h2>
-          <button onClick={handleClick}>{signUp?'Log In!':'Register now!'}</button>
-          <Form onSubmit={formik.handleSubmit}>
-            <label>
-              Name
-            </label>
-            <input type='text' name='name' value={formik.values.name} onChange={formik.handleChange} />
-            {signUp && (
-              <>
-              <label>
-                Email
-              </label>
-              <input type='text' name='email' value={formik.values.email} onChange={formik.handleChange} />
-              </>
-            )}
-            <>
-            <label>
-              Password
-            </label>
-            <input type='text' name='password' value={formik.values.password} onChange={formik.handleChange} />
-            </>
-            <input type='submit' value={signUp?'Sign Up!':'Log In!'} onSubmit={Object.values(formik.errors).map(error => <h2 style={{color:'red'}}> {error}</h2>)}/>
-          </Form>
+  return (
+    <> 
+      {Object.values(formik.errors).map(error => <h2 style={{color:'red'}}> {error}</h2>)}
+      <h2>Please Log in or Sign up!</h2>
+      <h2>{signUp?'Already a member?':'Not a member?'}</h2>
+      <button onClick={handleClick}>{signUp?'Log In!':'Register now!'}</button>
+      <Form onSubmit={formik.handleSubmit}>
+        <label>
+          Name
+        </label>
+        <input type='text' name='name' value={formik.values.name} onChange={formik.handleChange} />
+        {signUp && (
+          <>
+          <label>
+            Email
+          </label>
+          <input type='text' name='email' value={formik.values.email} onChange={formik.handleChange} />
+          </>
+        )}
+        <>
+        <label>
+          Password
+        </label>
+        <input type='text' name='password' value={formik.values.password} onChange={formik.handleChange} />
         </>
-    )
+        <input type='submit' value={signUp?'Sign Up!':'Log In!'} onSubmit={Object.values(formik.errors).map(error => <h2 style={{color:'red'}}> {error}</h2>)}/>
+      </Form>
+    </>
+  )
 }
-
-export default Authentication
 
 export const Form = styled.form`
 display:flex;

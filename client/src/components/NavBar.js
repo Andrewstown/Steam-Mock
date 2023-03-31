@@ -2,7 +2,7 @@ import React from "react"
 import {NavLink} from "react-router-dom"
 
 export default function NavBar({user}){
-  return (
+  return(
     <nav className="topnav">
       <ul>
         <li>

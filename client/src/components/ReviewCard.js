@@ -11,15 +11,13 @@ export default function ReviewCard({review}){
           })
       }, [])
 
-    return(
-        <>
-            {user ? <div class={'cards__item'}>
-                <div class="cards__review">
-                    <img src={user.img}></img>
-                    <p>Rating: {review.rating}</p>
-                    <p>{user.name}'s Review: {review.description}</p>
-                </div>
-            </div> : null}
-        </>
-    )
+    return(<>
+        {user ? <div class={'cards__item'}>
+            <div class="cards__review">
+                <img src={user.img}></img>
+                <p>Rating: {review.rating}</p>
+                <p>{user.name}'s Review: {review.description}</p>
+            </div>
+        </div> : null}
+    </>)
 }

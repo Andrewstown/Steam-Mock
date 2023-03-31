@@ -4,6 +4,7 @@ import "./GameLibraryCard.css"
 
 export default function GameLibraryCard({usergame}){
   const history = useHistory()
+
   const [game, setGame] = useState(null)
 
   useEffect(() => {
@@ -17,8 +18,7 @@ export default function GameLibraryCard({usergame}){
   const handleClick = () => history.push(`/store/${game.id}`)
 
   return (
-    <>
-    {game ? <div class="libraryparent">
+    <>{game ? <div class="libraryparent">
       <ul className="libraryList">
         <h1>{game.title}</h1>
         <img src={game.img} alt={game.title}/>
@@ -26,7 +26,6 @@ export default function GameLibraryCard({usergame}){
         <p>{'Playtime: ' + usergame.hours_played + ' hours'}</p>
       </ul>
       <button className= "librarybutton" onClick={handleClick}>Store Page</button>
-    </div> : null}
-    </>
+    </div> : null}</>
   )
 }

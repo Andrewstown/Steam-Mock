@@ -1,8 +1,8 @@
 import React, {useState} from "react"
 import {useHistory, useLocation} from 'react-router-dom'
 
-import CommunityUser from "./CommunityUser"
 import ProfileCard from "./ProfileCard"
+import CommunityUser from "./CommunityUser"
 
 import './Community.css'
 
@@ -14,9 +14,7 @@ export default function Community({users}){
 
   const changeSearch = event => setSearch(event.target.value)
 
-  const setU = user => {
-    history.push(`/community/${user}`)
-  }
+  const setU = user => history.push(`/community/${user}`)
 
   return (<>{location.pathname.length > 10 ?
     <ProfileCard user={users.find(user => user.id == location.pathname[11])}/>

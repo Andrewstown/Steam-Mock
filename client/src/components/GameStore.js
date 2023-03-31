@@ -3,24 +3,19 @@ import {useLocation} from 'react-router-dom'
 
 import GameStoreCard from "./GameStoreCard"
 
-export default function GameStore({games, onChangeGenre, onChangedTitle, searchTitle, user}){
+export default function GameStore({games, searchGenre, onChangeGenre, onChangedTitle, searchTitle, user}){
 
   const location = useLocation()
 
-  function handleChangeGenre(event) {
-    onChangeGenre(event.target.value)
-  }
+  const handleChangeGenre = event => onChangeGenre(event.target.value)
 
-  function handleChangeTitle(event) {
-    onChangedTitle(event.target.value)
-  }
+  const handleChangeTitle = event => onChangedTitle(event.target.value)
 
   return(
-    <>
-      {location.pathname.length < 7 ?
+    <>{location.pathname.length < 7 ?
       <div className="store">
         <div class="search">
-          <select id="select-genre" class="filter" placeholder="Pick a genre..." onChange={handleChangeGenre}>
+          <select id="select-genre" class="filter" placeholder="Pick a genre..." value={searchGenre}onChange={handleChangeGenre}>
             <option value="">Pick a genre...</option>
             <option value="Indie">Indie</option>
             <option value="Adventure">Adventure</option>
@@ -49,10 +44,9 @@ export default function GameStore({games, onChangeGenre, onChangedTitle, searchT
           <input type="text" className="searchTitle" onChange = {handleChangeTitle} value = {searchTitle} placeholder="Search Titles"/>
         </div>
         <>
-          <ul className="cards">{games.map(game => <GameStoreCard game={game} user={user}/>)}</ul>
+          <ul className="cards">{games.filter(game => game.genre.toLowerCase().includes(searchGenre.toLowerCase()) && game.title.toLowerCase().includes(searchTitle.toLowerCase())).map(game => <GameStoreCard game={game} user={user}/>)}</ul>
         </>
       </div> :
-      <GameStoreCard game={games.find(game => game.id == location.pathname[7])} user={user}/>}
-    </>
+    <GameStoreCard game={games.find(game => game.id == location.pathname[7])} user={user}/>}</>
   )
 }
