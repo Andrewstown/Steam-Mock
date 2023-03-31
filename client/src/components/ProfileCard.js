@@ -1,5 +1,7 @@
 import React, {useState} from "react"
 import "./ProfileCard.css"
+import SubmitForm from "./SubmitForm"
+
 
 export default function ProfileCard({user}){
   return(
@@ -13,9 +15,10 @@ export default function ProfileCard({user}){
             />
           <div className="profile-card-content">
             <div className="profile-card-title">{user.name}</div>
-            <p className="profile-card-text">Bio: {user.bio}</p>
-            <div className="profile-card-detail">
-            </div>
+            <p className="profile-card-text">Bio: {user.bio}</p> 
+          </div>
+          <div>
+            {edit? <button onClick={handleClick}>Edit Profile</button> : <SubmitForm/>}
           </div>
         </div>
       </li>
