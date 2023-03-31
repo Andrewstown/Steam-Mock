@@ -195,6 +195,7 @@
 
 .cards{
   background-color: linear-gradient(120DEG, #0087b9, #031538);
+  cursor: pointer;
 }
 
 
@@ -209,7 +210,7 @@
 .searchTitle{
   float:right;
   margin:7px;
-
+  cursor: pointer;
 }
 
 .searchTitle button{
@@ -279,3 +280,8 @@
   font-weight: bold;  
   border: none;
 }
+
+#select-genre{
+  cursor: pointer;
+}
+
