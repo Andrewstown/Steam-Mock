@@ -91,7 +91,7 @@ if __name__ == '__main__':
         print('Generating UserGames with Reviews in them...')
         for user in User.query.all():
             for game in Game.query.all():
-                if randint(1, 3) == 1:
+                if randint(1, 5) == 1:
                     usergame = UserGame(
                         last_played = f.date_between(start_date=game.created_at),
                         hours_played = randint(0, 1000),

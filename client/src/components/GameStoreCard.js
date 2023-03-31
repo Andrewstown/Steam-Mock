@@ -3,7 +3,7 @@ import {useHistory, useLocation} from "react-router-dom"
 
 import ReviewCard from './ReviewCard'
 
-export default function GameCard({game, user}){
+export default function GameStoreCard({game, user}){
   const [purchased, setPurchased] = useState(user ? user.user_games.find(usergame => usergame.game_id == game.id) : null)
 
   const history = useHistory()

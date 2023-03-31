@@ -1,7 +1,7 @@
 import React from "react"
 import {useLocation} from 'react-router-dom'
 
-import GameCard from "./GameCard"
+import GameStoreCard from "./GameStoreCard"
 
 export default function GameStore({games, onChangeGenre, onChangedTitle, searchTitle, user}){
 
@@ -49,10 +49,10 @@ export default function GameStore({games, onChangeGenre, onChangedTitle, searchT
           <input type="text" className="searchTitle" onChange = {handleChangeTitle} value = {searchTitle} placeholder="Search Titles"/>
         </div>
         <>
-          <ul className="cards">{games.map(game => <GameCard game={game} user={user}/>)}</ul>
+          <ul className="cards">{games.map(game => <GameStoreCard game={game} user={user}/>)}</ul>
         </>
       </div> :
-      <GameCard game={games.find(game => game.id == location.pathname[7])} user={user}/>}
+      <GameStoreCard game={games.find(game => game.id == location.pathname[7])} user={user}/>}
     </>
   )
 }

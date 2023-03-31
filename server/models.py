@@ -1,3 +1,4 @@
+import datetime
 from flask import Flask
 from flask_cors import CORS
 from flask_migrate import Migrate
@@ -28,13 +29,13 @@ class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    bio = db.Column(db.String, server_default='')
-    img = db.Column(db.String, server_default='https://steamuserimages-a.akamaihd.net/ugc/885384897182110030/F095539864AC9E94AE5236E04C8CA7C2725BCEFF/')
+    bio = db.Column(db.String, default='')
+    img = db.Column(db.String, default='https://steamuserimages-a.akamaihd.net/ugc/885384897182110030/F095539864AC9E94AE5236E04C8CA7C2725BCEFF/')
     name = db.Column(db.String)
     email = db.Column(db.String)
     password = db.Column(db.String)
-    updated_at = db.Column(db.DateTime, onupdate=db.func.now())
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     user_games = db.relationship('UserGame', backref='user')
 
@@ -71,8 +72,8 @@ class Game(db.Model, SerializerMixin):
     title = db.Column(db.String)
     studio = db.Column(db.String)
     description = db.Column(db.String)
-    updated_at = db.Column(db.DateTime, onupdate=db.func.now())
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     game_reviews = db.relationship('Review', backref='game')
 
@@ -123,8 +124,8 @@ class Review(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     rating = db.Column(db.Integer)
     description = db.Column(db.String)
-    updated_at = db.Column(db.DateTime, onupdate=db.func.now())
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     game_id = db.Column(db.Integer, db.ForeignKey('games.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -145,10 +146,10 @@ class UserGame(db.Model, SerializerMixin):
     __tablename__ = 'user_games'
 
     id = db.Column(db.Integer, primary_key=True)
-    last_played = db.Column(db.DateTime, server_default=db.func.now())
-    hours_played = db.Column(db.Integer, server_default='0')
-    updated_at = db.Column(db.DateTime, onupdate=db.func.now())
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    last_played = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    hours_played = db.Column(db.Integer, default='0')
+    updated_at = db.Column(db.DateTime, onupdate=datetime.datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     
     game_id = db.Column(db.Integer, db.ForeignKey('games.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
