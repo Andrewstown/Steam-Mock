@@ -1,5 +1,5 @@
-import React, {useEffect, useReducer, useState} from "react"
-import {Link, Route, Switch, useHistory} from "react-router-dom"
+import React, {useEffect, useState} from "react"
+import {Route, Switch, useHistory} from "react-router-dom"
 
 import NavBar from "./NavBar"
 import Header from "./Header"
@@ -16,7 +16,6 @@ export default function App(){
 
   const [searchGenre, setSearchGenre] = useState("")
   const [searchTitle, setSearchTitle] = useState("")
-
 
   useEffect(() => {
     fetchUser()
@@ -59,7 +58,7 @@ export default function App(){
           {useHistory().push('/store')}
         </Route>
         <Route path="/store">
-          <GameStore games={games.filter(game => game.genre.toLowerCase().includes(searchGenre.toLowerCase()) && game.title.toLowerCase().includes(searchTitle.toLowerCase()))} searchGenre={searchGenre} onChangeGenre={setSearchGenre} searchTitle={searchTitle} onChangedTitle={setSearchTitle}/>
+          <GameStore games={games.filter(game => game.genre.toLowerCase().includes(searchGenre.toLowerCase()) && game.title.toLowerCase().includes(searchTitle.toLowerCase()))} searchGenre={searchGenre} onChangeGenre={setSearchGenre} searchTitle={searchTitle} onChangedTitle={setSearchTitle} user={user}/>
         </Route>
         {user ? <Route exact path="/library">
           <GameLibrary user={user}/>

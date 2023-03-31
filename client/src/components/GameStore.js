@@ -3,7 +3,7 @@ import {useLocation} from 'react-router-dom'
 
 import GameCard from "./GameCard"
 
-export default function GameStore({games, onChangeGenre, onChangedTitle, searchTitle}){
+export default function GameStore({games, onChangeGenre, onChangedTitle, searchTitle, user}){
 
   const location = useLocation()
 
@@ -16,9 +16,9 @@ export default function GameStore({games, onChangeGenre, onChangedTitle, searchT
   }
 
   return(
-    <div className="store">
+    <>
       {location.pathname.length < 7 ?
-      <div>
+      <div className="store">
         <div class="search">
           <select id="select-genre" class="filter" placeholder="Pick a genre..." onChange={handleChangeGenre}>
             <option value="">Pick a genre...</option>
@@ -48,11 +48,11 @@ export default function GameStore({games, onChangeGenre, onChangedTitle, searchT
           </select>
           <input type="text" className="searchTitle" onChange = {handleChangeTitle} value = {searchTitle} placeholder="Search Titles"/>
         </div>
-        <div>
-          <ul className="cards">{games.map(game => <GameCard game={game}/>)}</ul>
-        </div>
+        <>
+          <ul className="cards">{games.map(game => <GameCard game={game} user={user}/>)}</ul>
+        </>
       </div> :
       <GameCard game={games.find(game => game.id == location.pathname[7])}/>}
-    </div>
+    </>
   )
 }

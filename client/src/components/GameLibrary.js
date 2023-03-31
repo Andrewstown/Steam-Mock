@@ -3,8 +3,6 @@ import GameLibraryCard from "./GameLibraryCard"
 
 export default function GameLibrary({user}){
   const [userGames, setUserGames] = useState([])
-  const [game, setGame] = useState(null)
-  const [userGame, setUserGame] = useState(null)
   
   useEffect(() => {
     fetch(`/users/${user.id}`)
@@ -14,21 +12,9 @@ export default function GameLibrary({user}){
       })
   }, [])
 
-
-  function setG(g, uG) {
-    setGame(g);
-    setUserGame(uG)
-  }
-  //
-
-  // const cards = games.map((game) => (
-  //   <GameLibraryCard game = {game}/>
-  // ))
-
   return (
     <div className="gameDiv">
-      {userGames && userGames.length > 0 ? userGames.map(usergame => <GameLibraryCard usergame={usergame} setG = {setG}/>) : null}
-      {game ? <p>{game.title}</p>: null}
+      {userGames && userGames.length > 0 ? userGames.map(usergame => <GameLibraryCard usergame={usergame}/>) : null}
     </div>
   )
 }
