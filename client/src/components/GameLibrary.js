@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
-import GameLibraryCard from "./GameLibraryCard";
+import React, {useEffect, useState} from "react"
+import GameLibraryCard from "./GameLibraryCard"
 
-export default function GameLibrary({games, user}){
+export default function GameLibrary({user}){
   const [userGames, setUserGames] = useState([])
   const [game, setGame] = useState(null)
   const [userGame, setUserGame] = useState(null)
