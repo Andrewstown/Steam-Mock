@@ -1,9 +1,9 @@
-import React from "react";
-import { NavLink } from "react-router-dom"
-import { useHistory } from 'react-router-dom'
+import React from "react"
+import {NavLink} from "react-router-dom"
+import {useHistory} from 'react-router-dom'
 
 
-function Header({updateUser, user}) {
+export default  function Header({updateUser, user}) {
 
   const history = useHistory()
 
@@ -17,24 +17,19 @@ function Header({updateUser, user}) {
         history.push('/store')
       }
     })
-
   }
 
-  return (
+  return(
     <header className="header">
       <div class="dropdown">
-        <button class="dropbtn">{user ?
-        <div>
-          <NavLink to="/login" onClick={handleLogout}>Logout</NavLink>
-          <img src={user.img} className="header__image"></img>
-          <p>{user.name}</p>
-        </div> :
-        <NavLink to="/login">Login</NavLink>}
+        <button onClick={user ? handleLogout : null} class="dropbtn">
+        <NavLink to="/login">{user ? 'Logout' : 'Login'}</NavLink>
+          {user ? <>
+            <img src={user.img} className="header__image"></img>
+            <p>{user.name}</p>
+          </> : null}
         </button>
       </div>       
     </header>
-    );
+    )
 }
-
-export default Header;
-

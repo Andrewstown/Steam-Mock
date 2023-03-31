@@ -2,7 +2,6 @@ import React, {useState} from "react"
 import "./ProfileCard.css"
 
 export default function ProfileCard({user}){
-  console.log(user)
   return(
     user &&
       <li className="profile-cards-item">

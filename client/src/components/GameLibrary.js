@@ -3,6 +3,9 @@ import GameLibraryCard from "./GameLibraryCard"
 
 export default function GameLibrary({user}){
   const [userGames, setUserGames] = useState([])
+  const [userGame, setUserGame] = useState(null)
+  const [game, setGame] = useState(null)
+
   
   useEffect(() => {
     fetch(`/users/${user.id}`)

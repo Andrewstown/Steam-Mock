@@ -3,11 +3,11 @@ import {Route, Switch, useHistory} from "react-router-dom"
 
 import NavBar from "./NavBar"
 import Header from "./Header"
+import Profile from "./Profile"
 import Community from "./Community"
 import GameStore from "./GameStore"
 import GameLibrary from "./GameLibrary"
 import Authentication from "./Authentication"
-import Profile from "./Profile"
 
 export default function App(){
   const [games, setGames] = useState([])
@@ -66,14 +66,14 @@ export default function App(){
           <GameLibrary user={user}/>
         </Route> : null}
         <Route exact path="/community">
-          <Community users = {users}/>
+          {users ? <Community users = {users}/> : null}
         </Route>
         <Route exact path="/login">
           <Authentication updateUser={updateUser} updateUsers={updateUsers}/>
         </Route>
-        <Route exact path="/profile">
+        {user ? <Route exact path="/profile">
           <Profile user={user}/>
-        </Route>
+        </Route> : null}
         <Route path="*">
             <h1>404 not found</h1>
         </Route> 

@@ -6,7 +6,6 @@ export default function CommunityUser({user}){
   const [name, setName] = useState("")
 
   function handlePatch() {
-    console.log("patch")
   }
 
   function handleClick() {
@@ -21,7 +20,6 @@ export default function CommunityUser({user}){
   const handleSubmit = (event) => {
     event.preventDefault()
     const newNameObj = {names: [...name, name]}
-    console.log(newNameObj)
 
         fetch(`/users/${user.id}`, {
             method: "PATCH",
@@ -31,7 +29,6 @@ export default function CommunityUser({user}){
             body: JSON.stringify(newNameObj)
             })
             .then(response => {
-                console.log(response.status)
                 return response.json()
             })
             .then(data => handlePatch(data))
