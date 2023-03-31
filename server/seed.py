@@ -6,7 +6,7 @@ from app import app
 from models import db, User, Game, Review, UserGame
 
 userTemp = {
-    'images': ['https://ih1.redbubble.net/image.1006254060.9061/flat,128x128,075,f-pad,128x128,f8f8f8.jpg', 'https://i.redd.it/2gpmu2gi5fp81.jpg', 'https://styles.redditmedia.com/t5_5cwq5h/styles/communityIcon_3zly5qgpzf081.png', 'https://cdn.pixilart.com/photos/large/6b2753d8322e716.jpg', 'https://lumiere-a.akamaihd.net/v1/images/ct_starwarsgalaxyofadventures_chewbaccaddt-17324_e75574c4.jpeg?region=0,0,600,600&width=320', 'https://cdn130.picsart.com/338829095079201.png?type=webp&to=crop&r=256'],
+    'images': ['https://ih1.redbubble.net/image.1006254060.9061/flat,128x128,075,f-pad,128x128,f8f8f8.jpg', 'https://i.redd.it/2gpmu2gi5fp81.jpg', 'https://styles.redditmedia.com/t5_5cwq5h/styles/communityIcon_3zly5qgpzf081.png', 'https://cdn.pixilart.com/photos/large/6b2753d8322e716.jpg', 'https://lumiere-a.akamaihd.net/v1/images/ct_starwarsgalaxyofadventures_chewbaccaddt-17324_e75574c4.jpeg?region=0,0,600,600&width=320', 'https://cdn130.picsart.com/338829095079201.png?type=webp&to=crop&r=256', 'https://avatars.cloudflare.steamstatic.com/0258e021b63216349f3797ce10edfad2e59add72_full.jpg', 'https://avatars.cloudflare.steamstatic.com/08d4952dde9f8996da99130773b5f8fe75f2af8b_full.jpg', 'https://avatars.cloudflare.steamstatic.com/37a06b978698416badb3e3f5993ece963b4b56a7_full.jpg', 'https://avatars.cloudflare.steamstatic.com/192e9bc9c0febadc3c9b1dea811b6897b397b85c_full.jpg', 'https://avatars.cloudflare.steamstatic.com/7553644d43f531a2b68243fbb95b3602ff93f383_full.jpg', 'https://avatars.cloudflare.steamstatic.com/406d0923fc4f797767300920450f9ad027e95058_full.jpg', 'https://avatars.cloudflare.steamstatic.com/592127b969c1fa9357ce74137d6b8876bb9de918_full.jpg', 'https://avatars.cloudflare.steamstatic.com/c078ffb98dc76288cd637a87e941d8ef3d44a96c_full.jpg', 'https://avatars.cloudflare.steamstatic.com/fcdfbb8f1ef32e7eca854cf675741398f394ad78_full.jpg', 'https://avatars.cloudflare.steamstatic.com/f1a16ca1367ac91a62866e3ff1459ce0d2f4d33c_full.jpg', 'https://avatars.cloudflare.steamstatic.com/4709931bd75aae36823a409b8c93f599f069cb22_full.jpg', 'https://avatars.cloudflare.steamstatic.com/ac25080aa3be95c592222e2505c60629327b70eb_full.jpg', 'https://avatars.cloudflare.steamstatic.com/89afebc26faf00e16cde2bf45ba475b4994e785a_full.jpg', 'https://avatars.cloudflare.steamstatic.com/764e7f16c7b77bc188873549ec127479300cab8b_full.jpg', 'https://avatars.cloudflare.steamstatic.com/7c48f4951d3aa356191e561e9fed03d0aec38c04_full.jpg', 'https://avatars.cloudflare.steamstatic.com/7511e32f75836e4f5d1df37a153c4274da9a59bd_full.jpg', 'https://avatars.cloudflare.steamstatic.com/15dca0a6e2434e7ae40cc398b6b7f2a6c0352535_full.jpg', 'https://avatars.cloudflare.steamstatic.com/7c1436fabbccb5e7f0cff4c72058fd3b4a6463c6_full.jpg', 'https://avatars.cloudflare.steamstatic.com/da2db502dfd5002020549a4fb269606c314f93bc_full.jpg'],
     'passwords': ['password123', 'yullneverGETTHIS!', 'baseball2005', 'iHATEjustice123321', 'mariokart8iscool', 'wonder543women']
 }
 
@@ -63,7 +63,7 @@ if __name__ == '__main__':
         )
         db.session.add(user)
 
-        for i in range(40):
+        for i in range(70):
             user = User(
                 bio = f.paragraph(nb_sentences=5), 
                 img = randint(1, 3) == 1 and 'https://steamuserimages-a.akamaihd.net/ugc/885384897182110030/F095539864AC9E94AE5236E04C8CA7C2725BCEFF/' or userTemp['images'][randint(0, len(userTemp['images'])-1)],

@@ -27,7 +27,6 @@ export default function GameCard({game, user}){
     .then(setPurchased(true))
   }
 
-  console.log(purchased)
   return(
     <div className="gameDiv" onClick={handleClick}>
       {game ?
