@@ -65,7 +65,7 @@ export default function App(){
         {user ? <Route exact path="/library">
           <GameLibrary user={user}/>
         </Route> : null}
-        <Route exact path="/community">
+        <Route path="/community">
           {users ? <Community users = {users}/> : null}
         </Route>
         <Route exact path="/login">

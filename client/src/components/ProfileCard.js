@@ -1,10 +1,17 @@
 import React, {useState} from "react"
+import { useLocation } from "react-router-dom"
+
 import SubmitForm from "./SubmitForm"
+
 import "./ProfileCard.css"
 
 export default function ProfileCard({user, updateUsers}){
+  const location = useLocation()
+
   const [edit, setEdit] = useState(false)
+
   const handleClick = () => {
+
     setEdit(!edit)
   }
 
@@ -15,7 +22,7 @@ export default function ProfileCard({user, updateUsers}){
         <div className="profile-card-title">{user.name}</div>
         <p className="profile-card-text">Bio: {user.bio}</p>
       </div>
-      {edit ? <SubmitForm user={user} updateUsers={updateUsers}/> : <button onClick={handleClick}>Edit Profile</button>}
+      {location.pathname.length < 10 ? edit ? <SubmitForm user={user} updateUsers={updateUsers}/> : <button onClick={handleClick}>Edit Profile</button> : null}
     </li>
   : null}</>)
 }
