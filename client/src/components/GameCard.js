@@ -40,7 +40,7 @@ export default function GameCard({game, user}){
             <>
               <p>{game.studio}</p>
               <p>{game.description}</p>
-              <button onClick={handleBuy}>BUY</button>
+              <button class="dropbtn" onClick={handleBuy}>BUY</button>
             </>
             : null}
           </ul>
