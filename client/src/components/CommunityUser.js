@@ -39,7 +39,7 @@ export default function CommunityUser({user}){
 
   return(
     <li className="cards__item">
-      <div className="card">
+      <div className="card_community">
         <img
           onClick = {handleClick}
           src={user.img}

@@ -175,16 +175,16 @@
 .card__image{
   object-fit: cover;
   /* object-position: 75% 50%; */
-  width: 75%;
-  height: 96.9%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80px;
   box-shadow: 2px 5px 13px rgb(152, 152, 153);
   border-style: ridge;
   border-width: 10px;
   border-color: #6694d5;
   border-radius: 3px;
   cursor: pointer;
-  position: relative;
-  left: 50px;
 }
 
 .card__title{
