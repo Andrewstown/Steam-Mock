@@ -1,21 +1,24 @@
 import React, {useState} from "react"
+import "./ProfileCard.css"
 
 export default function ProfileCard({user}){
+  console.log(user)
   return(
-    <li className="cards__item">
-      <div className="card">
-        <img
-          src={user.img}
-          alt={user.name}
-          className="card__image"
-        />
-        <div className="card__content">
-          <div className="card__title">{user.name}</div>
-          <p className="card__text">{user.bio}</p>
-          <div className="card__detail">
+    user &&
+      <li className="profile-cards-item">
+        <div className="profile-card">
+          <img
+            src={user.img}
+            alt={user.name}
+            className="profile-card-image"
+            />
+          <div className="profile-card-content">
+            <div className="profile-card-title">{user.name}</div>
+            <p className="profile-card-text">Bio: {user.bio}</p>
+            <div className="profile-card-detail">
+            </div>
           </div>
         </div>
-      </div>
-    </li>
+      </li>
   )
 }
