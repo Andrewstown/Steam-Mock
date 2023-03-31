@@ -1,5 +1,5 @@
 import React, {useEffect, useReducer, useState} from "react"
-import {Link, Route, Switch} from "react-router-dom"
+import {Link, Route, Switch, useHistory} from "react-router-dom"
 
 import NavBar from "./NavBar"
 import Header from "./Header"
@@ -10,7 +10,6 @@ import Authentication from "./Authentication"
 import Profile from "./Profile"
 
 export default function App(){
-
   const [games, setGames] = useState([])
   const [users, setUsers] = useState(null)
   const [user, setUser] = useState(null)
@@ -56,11 +55,14 @@ export default function App(){
       <Header updateUser={updateUser} user={user}/>
       <NavBar user={user}/>
       <Switch>
-        <Route exact path="/store">
+        <Route exact path="/">
+          {useHistory().push('/store')}
+        </Route>
+        <Route path="/store">
           <GameStore games={games.filter(game => game.genre.toLowerCase().includes(searchGenre.toLowerCase()) && game.title.toLowerCase().includes(searchTitle.toLowerCase()))} searchGenre={searchGenre} onChangeGenre={setSearchGenre} searchTitle={searchTitle} onChangedTitle={setSearchTitle}/>
         </Route>
         {user ? <Route exact path="/library">
-          <GameLibrary games={games} user={user}/>
+          <GameLibrary user={user}/>
         </Route> : null}
         <Route exact path="/community">
           <Community users = {users}/>
