@@ -52,7 +52,7 @@ export default function GameStore({games, onChangeGenre, onChangedTitle, searchT
           <ul className="cards">{games.map(game => <GameCard game={game} user={user}/>)}</ul>
         </>
       </div> :
-      <GameCard game={games.find(game => game.id == location.pathname[7])}/>}
+      <GameCard game={games.find(game => game.id == location.pathname[7])} user={user}/>}
     </>
   )
 }

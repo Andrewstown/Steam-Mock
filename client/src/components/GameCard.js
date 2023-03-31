@@ -1,9 +1,11 @@
-import React from "react"
+import React, {useState} from "react"
 import {useHistory, useLocation} from "react-router-dom"
 
 import ReviewCard from './ReviewCard'
 
 export default function GameCard({game, user}){
+  const [purchased, setPurchased] = useState(user ? user.user_games.find(usergame => usergame.game_id == game.id) : null)
+
   const history = useHistory()
   const location = useLocation()
   
@@ -11,22 +13,21 @@ export default function GameCard({game, user}){
     history.push(`/store/${game.id}`)
   }
 
-  const handleBuy = () => {
-    fetch('/usergamers', {
+  const userBuy = () => {
+    fetch('/usergames', {
       method: "POST",
       headers: {
           "Content-Type":"application/json"                    
       },
       body: JSON.stringify({
-        user_id: user.id
+        user_id: user.id,
+        game_id: game.id
       })
     })
-    .then(r => r.json())
-    .then(data => {
-        console.log(data)
-    })
+    .then(setPurchased(true))
   }
 
+  console.log(purchased)
   return(
     <div className="gameDiv" onClick={handleClick}>
       {game ?
@@ -40,7 +41,7 @@ export default function GameCard({game, user}){
             <>
               <p>{game.studio}</p>
               <p>{game.description}</p>
-              <button class="dropbtn" onClick={handleBuy}>BUY</button>
+              {purchased ? null : <button class="dropbtn" onClick={userBuy}>BUY</button>}
             </>
             : null}
           </ul>
