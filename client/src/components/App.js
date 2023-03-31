@@ -72,7 +72,7 @@ export default function App(){
           <Authentication updateUser={updateUser} updateUsers={updateUsers}/>
         </Route>
         {user ? <Route exact path="/profile">
-          <Profile user={user}/>
+          <Profile user={user} updateUsers={updateUsers}/>
         </Route> : null}
         <Route path="*">
             <h1>404 not found</h1>
