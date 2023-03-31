@@ -61,7 +61,7 @@ export default function GameStoreCard({game, user}){
             : null}
           </ul>
           {location.pathname.length > 7 ? <>
-            {game.game_reviews.find(review => review.user_id == user.id) || !user.user_games.find(usergame => usergame.game_id == game.id)? null : <>
+            {user ? <>{game.game_reviews.find(review => review.user_id == user.id) || !user.user_games.find(usergame => usergame.game_id == game.id)? null : <>
               <div className='userForm'>
               <form onSubmit={handleSubmit} className="form">
                 <h1>Write A Review!</h1>
@@ -72,7 +72,7 @@ export default function GameStoreCard({game, user}){
                 <button type="submit">Submit</button> 
               </form>
             </div> 
-            </>}
+            </>}</> : null}
             <ul className="review">{game.game_reviews.map(review => <ReviewCard review={review}/>)}</ul>
           </>: null}
       </>: null}
